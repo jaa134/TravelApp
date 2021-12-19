@@ -17,7 +17,8 @@ const RandomCountry = () => {
   const [country, setCountry] = useState(null);
   const [shouldNavigate, setShouldNavigate] = useState(false);
 
-  // Once the number of countries changes, choose a random country and initiate a countdown for navigation
+  // Once the number of countries changes, choose a random
+  // country and initiate a countdown for navigation
   useEffect(() => {
     let timer;
     if (countries.length > 0) {
@@ -64,7 +65,9 @@ const RandomCountry = () => {
   }
   return (
     <div className={bem()}>
-      <Typography variant="h5">Teleporting you to a random country!</Typography>
+      <Typography variant="h5">
+        Teleporting you to a random country!
+      </Typography>
       {content}
     </div>
   );
