@@ -1,47 +1,47 @@
 import React, { useState, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
 import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
 import Typography from '@mui/material/Typography';
-import { paths } from '../../../constants';
-import { useListCountriesQuery } from '../../../api/lists';
-import defineBlock from '../../../utils/defineBlock';
-import './RandomCountry.scss';
+import { paths } from '../../../../constants';
+import { useListLanguagesQuery } from '../../../../api/lists';
+import defineBlock from '../../../../utils/defineBlock';
+import './RandomLanguage.scss';
 
-const bem = defineBlock('RandomCountry');
+const bem = defineBlock('RandomLanguage');
 
-// Wait 3 seconds before navigation
-const timeUntilNav = 3000;
-
-const RandomCountry = () => {
-  const { countries, countriesLoading, countriesError } = useListCountriesQuery();
-  const [country, setCountry] = useState(null);
+const RandomLanguage = ({
+  timeUntilNav
+}) => {
+  const { languages, languagesLoading, languagesError } = useListLanguagesQuery();
+  const [language, setLanguage] = useState(null);
   const [shouldNavigate, setShouldNavigate] = useState(false);
 
-  // Once the number of countries changes, choose a random
-  // country and initiate a countdown for navigation
+  // Once the number of languages changes, choose a random
+  // language and initiate a countdown for navigation
   useEffect(() => {
     let timer;
-    if (countries.length > 0) {
-      const randomIndex = Math.floor(Math.random() * countries.length);
-      setCountry(countries[randomIndex]);
+    if (languages.length > 0) {
+      const randomIndex = Math.floor(Math.random() * languages.length);
+      setLanguage(languages[randomIndex]);
       timer = setTimeout(() => {
         setShouldNavigate(true);
       }, timeUntilNav);
     }
     return () => clearTimeout(timer);
-  }, [countries.length]);
+  }, [languages.length]);
 
   let content = null;
-  if (countriesLoading) {
+  if (languagesLoading) {
     content = (
       <Box sx={{ display: 'flex' }}>
         <CircularProgress />
       </Box>
     );
-  } else if (countriesError) {
+  } else if (languagesError) {
     content = (
       <Alert severity="error">
         <AlertTitle>Oops, something went wrong!</AlertTitle>
@@ -50,18 +50,16 @@ const RandomCountry = () => {
     );
   } else if (shouldNavigate) {
     content = (
-      <Navigate to={`/${paths.COUNTRY}/${country.code}`} />
+      <Navigate to={`/${paths.LANGUAGE}/${language.code}`} />
     );
-  } else if (country) {
+  } else if (language) {
     content = (
       <>
         <Typography variant="subtitle1">Hold on tight...</Typography>
         <Typography variant="body1">
           You are going to
           {' '}
-          {country.emoji}
-          {' '}
-          {country.name}
+          {language.name}
         </Typography>
       </>
     );
@@ -69,11 +67,15 @@ const RandomCountry = () => {
   return (
     <div className={bem()}>
       <Typography variant="h5">
-        Teleporting you to a random country!
+        Teleporting you to a random language page!
       </Typography>
       {content}
     </div>
   );
 };
 
-export default RandomCountry;
+RandomLanguage.propTypes = {
+  timeUntilNav: PropTypes.number.isRequired
+};
+
+export default RandomLanguage;

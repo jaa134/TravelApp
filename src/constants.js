@@ -1,9 +1,11 @@
 export const paths = {
   CONTINENTS: 'continents',
+  CONTINENT: 'continent',
   COUNTRIES: 'countries',
+  COUNTRY: 'country',
   LANGUAGES: 'languages',
+  LANGUAGE: 'language',
   FAVORITES: 'favorites',
   RANDOM: 'random',
-  GRAPHIQL: 'graphiql',
-  COUNTRY: 'country'
+  GRAPHIQL: 'graphiql'
 };

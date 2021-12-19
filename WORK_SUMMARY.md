@@ -28,6 +28,7 @@ Procedure
 13. Created a random country page that chooses a random country and navigates the user after a given number of seconds.
 14. Mocked out local storage for tests.
 15. Create lists for continents and languages
+16. Start working on a random page navigation component that will help users discover new locations or languages
 
 ### TODO
 - Create a home page that explains the website.
