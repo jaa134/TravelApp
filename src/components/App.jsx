@@ -90,7 +90,11 @@ const App = () => {
           ))}
         </List>
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+      <Box
+        className={bem('content')}
+        component="main"
+        sx={{ flexGrow: 1 }}
+      >
         <CountriesList />
       </Box>
     </Box>
