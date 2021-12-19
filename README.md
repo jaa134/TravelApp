@@ -20,6 +20,8 @@ Procedure
 - Babel
 - Docker
 - React v17
+- GraphQL
+- Sass
 - Jest
 - Enzyme
 - Material UI
