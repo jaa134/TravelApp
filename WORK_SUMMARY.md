@@ -14,7 +14,7 @@ Procedure
 
 ### Accomplishments
 1. Created a git repo
-2. Setup simple project workspace with yarn from scratch. This entire project so far is from scratch.
+2. Setup simple project workspace with yarn from scratch. This entire project so far is from scratch. I may regret how I spent  my time, but I know what I am doing!
 3. Created a front end build process and setup configurations using Webpack, Babel, Sass, Docker, and Eslint
 4. Created a basic React "Hello world" application to verify build process
 5. Set up Jest and Enzyme to ensure that I could test my components later on and even begin doing some basic TDD
@@ -27,9 +27,11 @@ Procedure
 12. Created my first component to display GraphQL data. The component displays countries in a table along with their emoji's. It handles errors and loading states appropriately.
 13. Created a random country page that chooses a random country and navigates the user after a given number of seconds.
 14. Mocked out local storage for tests.
+15. Create lists for continents and languages
 
 ### TODO
-- Flush out the design for list/grid views. I should probably reconsider main navigation and turn it into [Continents, Countries, Languages].
+- Create a home page that explains the website.
+- Flush out the design for list views. Use a reusable component for list view layouts
 - Add more routes to explore areas by continent > cities > languages
 - Add functionality for favorites pages using local storage as we dont have backend setup for account management
 - Support filtering for list views using graphql input

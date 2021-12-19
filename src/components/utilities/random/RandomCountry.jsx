@@ -6,7 +6,7 @@ import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
 import Typography from '@mui/material/Typography';
 import { paths } from '../../../constants';
-import { useListCountriesQuery } from '../../../api/locations';
+import { useListCountriesQuery } from '../../../api/lists';
 import defineBlock from '../../../utils/defineBlock';
 import './RandomCountry.scss';
 

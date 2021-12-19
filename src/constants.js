@@ -1,7 +1,7 @@
 export const paths = {
-  GRID: 'grid',
-  LIST: 'list',
-  MAP: 'map',
+  CONTINENTS: 'continents',
+  COUNTRIES: 'countries',
+  LANGUAGES: 'languages',
   FAVORITES: 'favorites',
   RANDOM: 'random',
   GRAPHIQL: 'graphiql',

@@ -3,18 +3,18 @@ import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
 import Skeleton from '@mui/material/Skeleton';
 import Typography from '@mui/material/Typography';
-import { useListCountriesQuery } from '../../../api/locations';
+import { useListContinentsQuery } from '../../../api/lists';
 import defineBlock from '../../../utils/defineBlock';
-import './CountriesList.scss';
+import './ContinentsList.scss';
 
-const bem = defineBlock('CountriesList');
+const bem = defineBlock('ContinentsList');
 
-const CountriesList = () => {
-  const { countries, countriesLoading, countriesError } = useListCountriesQuery();
+const ContinentsList = () => {
+  const { continents, continentsLoading, continentsError } = useListContinentsQuery();
   let content = null;
-  if (countriesLoading) {
+  if (continentsLoading) {
     content = <Skeleton variant="rectangular" height={200} />;
-  } else if (countriesError) {
+  } else if (continentsError) {
     content = (
       <Alert severity="error">
         <AlertTitle>Oops, something went wrong!</AlertTitle>
@@ -25,11 +25,10 @@ const CountriesList = () => {
     content = (
       <table className={bem('table')}>
         <tbody>
-          {countries.map((country) => (
-            <tr key={country.code}>
-              <td className={bem('emoji')}>{country.emoji}</td>
-              <td>{country.code}</td>
-              <td>{country.name}</td>
+          {continents.map((continent) => (
+            <tr key={continent.code}>
+              <td>{continent.code}</td>
+              <td>{continent.name}</td>
             </tr>
           ))}
         </tbody>
@@ -38,10 +37,10 @@ const CountriesList = () => {
   }
   return (
     <div className={bem()}>
-      <Typography variant="h5">Countries</Typography>
+      <Typography variant="h5" gutterBottom>Continents</Typography>
       {content}
     </div>
   );
 };
 
-export default CountriesList;
+export default ContinentsList;

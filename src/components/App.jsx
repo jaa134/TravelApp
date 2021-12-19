@@ -22,16 +22,18 @@ import Typography from '@mui/material/Typography';
 import Toolbar from '@mui/material/Toolbar';
 import Tooltip from '@mui/material/Tooltip';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import GridViewIcon from '@mui/icons-material/GridView';
-import ListIcon from '@mui/icons-material/List';
-import MapIcon from '@mui/icons-material/Map';
+import FlagIcon from '@mui/icons-material/Flag';
 import MenuIcon from '@mui/icons-material/Menu';
+import PublicIcon from '@mui/icons-material/Public';
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 import TerminalIcon from '@mui/icons-material/Terminal';
+import TranslateIcon from '@mui/icons-material/Translate';
 import logoSrc from '../assets/images/map.svg';
 import { paths } from '../constants';
 import defineBlock from '../utils/defineBlock';
-import CountriesList from './views/list/CountriesList';
+import ContinentsList from './views/continents/ContinentsList';
+import CountriesList from './views/countries/CountriesList';
+import LanguagesList from './views/languages/LanguagesList';
 import RandomCountry from './utilities/random/RandomCountry';
 import GraphqlIDE from './utilities/graphiql/GraphqlIDE';
 import './App.scss';
@@ -40,19 +42,19 @@ export const bem = defineBlock('App');
 
 const views = [
   {
-    name: 'Grid',
-    icon: <GridViewIcon />,
-    href: paths.GRID
+    name: 'Continents',
+    icon: <PublicIcon />,
+    href: paths.CONTINENTS
   },
   {
-    name: 'List',
-    icon: <ListIcon />,
-    href: paths.LIST
+    name: 'Countries',
+    icon: <FlagIcon />,
+    href: paths.COUNTRIES
   },
   {
-    name: 'Map',
-    icon: <MapIcon />,
-    href: paths.MAP
+    name: 'Languages',
+    icon: <TranslateIcon />,
+    href: paths.LANGUAGES
   }
 ];
 
@@ -190,14 +192,14 @@ const App = () => {
         sx={{ flexGrow: 1 }}
       >
         <Routes>
-          <Route path={paths.GRID} element={<div />} exact />
-          <Route path={paths.LIST} element={<CountriesList />} exact />
-          <Route path={paths.MAP} element={<div />} exact />
+          <Route path={paths.CONTINENTS} element={<ContinentsList />} exact />
+          <Route path={paths.COUNTRIES} element={<CountriesList />} exact />
+          <Route path={paths.LANGUAGES} element={<LanguagesList />} exact />
           <Route path={paths.FAVORITES} element={<div />} exact />
           <Route path={paths.RANDOM} element={<RandomCountry />} exact />
           <Route path={paths.GRAPHIQL} element={<GraphqlIDE />} exact />
           <Route path={`${paths.COUNTRY}/:id`} element={<div />} exact />
-          <Route path="*" element={<Navigate replace to={paths.GRID} />} />
+          <Route path="*" element={<Navigate replace to={paths.CONTINENTS} />} />
         </Routes>
       </Box>
     </Box>
