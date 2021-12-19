@@ -25,6 +25,7 @@ Procedure
 10. Updated navigational components of the UI shell to reflect initial ideas. Included react-router-dom package to support hash routing
 11. Included GraphiQL to make traversing api easier with introspection. It was very  easy to framiliarize myself with the api because of this. It also makes testing queries easy.
 12. Created my first component to display GraphQL data. The component displays countries in a table along with their emoji's. It handles errors and loading states appropriately.
+13. Created a random country page that chooses a random country and navigates the user after a given number of seconds.
 
 ### TODO
 - Flush out the design for list/grid views. I should probably reconsider main navigation and turn it into [Continents, Countries, Languages].

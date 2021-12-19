@@ -4,5 +4,6 @@ export const paths = {
   MAP: 'map',
   FAVORITES: 'favorites',
   RANDOM: 'random',
-  GRAPHIQL: 'graphiql'
+  GRAPHIQL: 'graphiql',
+  COUNTRY: 'country'
 };

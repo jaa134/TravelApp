@@ -32,6 +32,7 @@ import logoSrc from '../assets/images/map.svg';
 import { paths } from '../constants';
 import defineBlock from '../utils/defineBlock';
 import CountriesList from './views/list/CountriesList';
+import RandomCountry from './utilities/random/RandomCountry';
 import GraphqlIDE from './utilities/graphiql/GraphqlIDE';
 import './App.scss';
 
@@ -193,8 +194,9 @@ const App = () => {
           <Route path={paths.LIST} element={<CountriesList />} exact />
           <Route path={paths.MAP} element={<div />} exact />
           <Route path={paths.FAVORITES} element={<div />} exact />
-          <Route path={paths.RANDOM} element={<div />} exact />
+          <Route path={paths.RANDOM} element={<RandomCountry />} exact />
           <Route path={paths.GRAPHIQL} element={<GraphqlIDE />} exact />
+          <Route path={`${paths.COUNTRY}/:id`} element={<div />} exact />
           <Route path="*" element={<Navigate replace to={paths.GRID} />} />
         </Routes>
       </Box>
