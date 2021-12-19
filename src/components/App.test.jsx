@@ -1,15 +1,13 @@
-// TODO: split Test configuration into a separate file. Move
-// enzyme adapter, and jsdom registration into a shared file
-// for use by every test.
-
-import React from 'react';
-import Enzyme, { mount } from 'enzyme';
-import Adapter from '@wojtekmaj/enzyme-adapter-react-17';
-import 'jsdom-global/register';
-import App, { bem as appBem } from './App';
-
-Enzyme.configure({ adapter: new Adapter() });
-
 describe('App', () => {
+  test.todo('Can open and close navigation menu');
 
+  test.todo('Can visit navigation links');
+
+  test.todo('Can open and close user menu');
+
+  test.todo('Can interact with user menu links');
+
+  test.todo('Visiting a bad URL redirects to the "home" page');
+
+  test.todo('Product logo and name are present');
 });
