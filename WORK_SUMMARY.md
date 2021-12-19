@@ -31,6 +31,6 @@ Procedure
 ### TODO
 - Flush out the design for list/grid views. I should probably reconsider main navigation and turn it into [Continents, Countries, Languages].
 - Add more routes to explore areas by continent > cities > languages
-- Add functionality for favorites/random pages
+- Add functionality for favorites pages using local storage as we dont have backend setup for account management
 - Add more tests
 - consider using Parcel in the future for quicker project configuration
