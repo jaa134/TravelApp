@@ -13,7 +13,10 @@ Procedure
 8. Iterate and improve
 
 ### TODO
-- configure Graphiql
+- Flush out the design for list/grid views. I should probably reconsider main navigation and turn it into [Continents, Countries, Languages].
+- Add more routes to explore areas by continent > cities > languages
+- Add functionality for favorites/random pages
+- Add more tests
 - consider using Parcel in the future for quicker project configuration
 
 ## Technologies

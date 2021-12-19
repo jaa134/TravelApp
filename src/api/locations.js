@@ -1,7 +1,7 @@
 import { gql, useQuery } from '@apollo/client';
 
 // write a GraphQL query that asks for names and codes for all countries
-const COUNTRIES = gql`
+const LIST_COUNTRIES = gql`
   {
     countries {
       name
@@ -12,7 +12,7 @@ const COUNTRIES = gql`
 `;
 
 export const useListCountriesQuery = () => {
-  const { data, loading, error } = useQuery(COUNTRIES, {
+  const { data, loading, error } = useQuery(LIST_COUNTRIES, {
     fetchPolicy: 'cache-first'
   });
   if (error) {
