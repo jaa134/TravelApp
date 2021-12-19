@@ -13,7 +13,7 @@ Procedure
 8. Iterate and improve
 
 ### TODO
-- ???
+- configure Graphiql
 
 ## Technologies
 - Webpack

@@ -16,6 +16,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 import logoSrc from '../assets/images/map.svg';
 import defineBlock from '../utils/defineBlock';
+import CountriesList from './views/list/CountriesList';
 import './App.scss';
 
 export const bem = defineBlock('App');
@@ -37,21 +38,21 @@ const views = [
     type: 'Random',
     icon: <QuestionMarkIcon />
   }
-]
+];
 
 const App = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   return (
     <Box className={bem()} sx={{ display: 'flex' }}>
-      <AppBar 
-        position="fixed" 
-        open={menuOpen} 
+      <AppBar
+        position="fixed"
+        open={menuOpen}
         sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}
       >
         <Toolbar>
           <IconButton
             aria-label="open menu drawer"
-            onClick={() => { setMenuOpen(true) }}
+            onClick={() => { setMenuOpen(!menuOpen); }}
             edge="start"
             color="inherit"
           >
@@ -75,9 +76,9 @@ const App = () => {
       <Drawer
         anchor="left"
         open={menuOpen}
-        onClose={() => { setMenuOpen(false) }}
+        onClose={() => { setMenuOpen(false); }}
       >
-        <Toolbar /> 
+        <Toolbar />
         <List className={bem('nav-list')}>
           {views.map((view) => (
             <ListItem key={view.type} button>
@@ -90,7 +91,7 @@ const App = () => {
         </List>
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-        abc
+        <CountriesList />
       </Box>
     </Box>
   );
