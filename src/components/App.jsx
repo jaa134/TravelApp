@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
+import Avatar from '@mui/material/Avatar';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
@@ -15,8 +16,12 @@ import ListSubheader from '@mui/material/ListSubheader';
 import ListItem from '@mui/material/ListItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
 import Toolbar from '@mui/material/Toolbar';
+import Tooltip from '@mui/material/Tooltip';
+import FavoriteIcon from '@mui/icons-material/Favorite';
 import GridViewIcon from '@mui/icons-material/GridView';
 import ListIcon from '@mui/icons-material/List';
 import MapIcon from '@mui/icons-material/Map';
@@ -50,14 +55,22 @@ const views = [
 
 const utilities = [
   {
+    type: 'Favorites',
+    icon: <FavoriteIcon />,
+    href: paths.RANDOM
+  },
+  {
     type: 'Random',
     icon: <QuestionMarkIcon />,
     href: paths.RANDOM
   }
 ];
 
+const userMenuItems = ['Profile', 'Account', 'Dashboard', 'Logout'];
+
 const App = () => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [anchorElUser, setAnchorElUser] = React.useState(null);
   return (
     <Box className={bem()} sx={{ display: 'flex' }}>
       <AppBar
@@ -87,6 +100,34 @@ const App = () => {
           >
             GeoPlanner
           </Typography>
+          <Box sx={{ flexGrow: 1 }}  />
+          <Tooltip title="Open user menu">
+            <IconButton onClick={(event) => { setAnchorElUser(event.currentTarget); }}>
+              <Avatar />
+            </IconButton>
+          </Tooltip>
+          <Menu
+            sx={{ mt: '45px' }}
+            id="menu-appbar"
+            anchorEl={anchorElUser}
+            anchorOrigin={{
+              vertical: 'top',
+              horizontal: 'right',
+            }}
+            keepMounted
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'right',
+            }}
+            open={Boolean(anchorElUser)}
+            onClose={()=> { setAnchorElUser(null); }}
+          >
+            {userMenuItems.map((setting) => (
+              <MenuItem key={setting}>
+                <Typography textAlign="center">{setting}</Typography>
+              </MenuItem>
+            ))}
+          </Menu>
         </Toolbar>
       </AppBar>
       <Drawer
