@@ -1,6 +1,9 @@
 # TravelApp
 GeoPlanner is a front end application that helps users plan trips to other continents, countries, and states. Easily navigate our travel API using traditional routing to show different pages for list and detail views. Learn more about the places you want to go with the world's #1 travel site! Did I mention this service is free?!?
 
+### World tour
+Take a world tour from our app's home page. We use Cesium and up-to-date geojson files so you can travel the world from the comfort of your own chair. Interact with this 3d model of Earth and its many countries. View country borders all across the globe, search for places to find them quickly, or click around the map for more detailed views.
+
 ### Favoriting
 While you explore, make sure to favorite the places you want to visit most. Manage your choices from the favorites tab which you can find under the utilities section of the main navigation. Like and unlike your data from the detail pages. No worries if you leave the site or even close your browser. Your favorites will still be here when you come back. We will persist this data in your browser using LocalStorage. Our solution is to use a context provider and custom hooks to manage the state of your favorites. This way we can keep all of the complicated business logic in a single location while also easily being able to provide methods for managing favorites to deeply nested components using context. Keeping your favorites in a sinlge location ensures that your data is consistent across our product.
 
