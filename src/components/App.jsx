@@ -33,6 +33,7 @@ import { paths } from '../constants';
 import defineBlock from '../utils/defineBlock';
 import ContinentsList from './views/continents/ContinentsList';
 import CountriesList from './views/countries/CountriesList';
+import CountryDetails from './views/countries/CountryDetails';
 import LanguagesList from './views/languages/LanguagesList';
 import RandomPage from './utilities/random/RandomPage';
 import GraphqlIDE from './utilities/graphiql/GraphqlIDE';
@@ -199,7 +200,7 @@ const App = () => {
           <Route path={paths.RANDOM} element={<RandomPage />} exact />
           <Route path={paths.GRAPHIQL} element={<GraphqlIDE />} exact />
           <Route path={`${paths.CONTINENT}/:id`} element={<div />} exact />
-          <Route path={`${paths.COUNTRY}/:id`} element={<div />} exact />
+          <Route path={`${paths.COUNTRY}/:id`} element={<CountryDetails />} exact />
           <Route path={`${paths.LANGUAGE}/:id`} element={<div />} exact />
           <Route path="*" element={<Navigate replace to={paths.CONTINENTS} />} />
         </Routes>

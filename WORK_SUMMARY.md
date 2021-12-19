@@ -30,13 +30,15 @@ Procedure
 15. Create lists for continents and languages
 16. Start working on a random page navigation component that will help users discover new locations or languages
 17. Add navigationto to details pages from list views
+17. Make initial detail views for continents, countries, and languages
 
 ### TODO
 - Create a home page that explains the website.
-- Flush out the design for list views. Use a reusable component for list view layouts
-- Add more routes to explore areas by continent > cities > languages
+- Flush out the design for list and detail views. Use a reusable component for layouts
 - Add functionality for favorites pages using local storage as we dont have backend setup for account management
 - Support filtering for list views using graphql input
 - Add pagination if the api supported it
+- Add error handling for detail views when url uses a code that does not exists in the api
+- Add escaping functionality for codes that could cause issues for url parsing
 - Add more tests
 - consider using Parcel in the future for quicker project configuration
