@@ -14,6 +14,7 @@ Procedure
 
 ### TODO
 - configure Graphiql
+- consider using Parcel in the future for quicker project configuration
 
 ## Technologies
 - Webpack

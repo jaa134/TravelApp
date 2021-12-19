@@ -24,18 +24,21 @@ const CountriesList = () => {
   } else {
     content = (
       <table className={bem('table')}>
-        {countries.map((country) => (
-          <tr key={country.code}>
-            <td className={bem('emoji')}>{country.emoji}</td>
-            <td>{country.code}</td>
-            <td>{country.name}</td>
-          </tr>
-        ))}
+        <tbody>
+          {countries.map((country) => (
+            <tr key={country.code}>
+              <td className={bem('emoji')}>{country.emoji}</td>
+              <td>{country.code}</td>
+              <td>{country.name}</td>
+            </tr>
+          ))}
+        </tbody>
       </table>
     );
   }
   return (
     <div className={bem()}>
+      <Typography variant="h5">Countries</Typography>
       {content}
     </div>
   );
