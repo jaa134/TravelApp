@@ -3,7 +3,7 @@ describe('ContinentsList', () => {
 
   test.todo('Error component is displayed while query is in error state');
 
-  test.todo('Continent rows render after query returns data');
+  test.todo('Continent rows render after query returns data and inlcudes a link to the continent details');
 
   test.todo('Can favorite a continent and the data is saved to local storage');
 });

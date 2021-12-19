@@ -1,8 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
 import Skeleton from '@mui/material/Skeleton';
 import Typography from '@mui/material/Typography';
+import { paths } from '../../../constants';
 import { useListCountriesQuery } from '../../../api/lists';
 import defineBlock from '../../../utils/defineBlock';
 import './CountriesList.scss';
@@ -29,7 +31,11 @@ const CountriesList = () => {
             <tr key={country.code}>
               <td className={bem('emoji')}>{country.emoji}</td>
               <td>{country.code}</td>
-              <td>{country.name}</td>
+              <td>
+                <Link to={`/${paths.COUNTRY}/${country.code}`}>
+                  {country.name}
+                </Link>
+              </td>
             </tr>
           ))}
         </tbody>

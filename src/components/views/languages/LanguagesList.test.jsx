@@ -3,7 +3,7 @@ describe('LanguagesList', () => {
 
   test.todo('Error component is displayed while query is in error state');
 
-  test.todo('Language rows render after query returns data');
+  test.todo('Language rows render after query returns data and inlcudes a link to the language details');
 
   test.todo('Can favorite a language and the data is saved to local storage');
 });

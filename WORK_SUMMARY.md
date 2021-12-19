@@ -29,6 +29,7 @@ Procedure
 14. Mocked out local storage for tests.
 15. Create lists for continents and languages
 16. Start working on a random page navigation component that will help users discover new locations or languages
+17. Add navigationto to details pages from list views
 
 ### TODO
 - Create a home page that explains the website.

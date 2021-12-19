@@ -1,8 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
 import Skeleton from '@mui/material/Skeleton';
 import Typography from '@mui/material/Typography';
+import { paths } from '../../../constants';
 import { useListLanguagesQuery } from '../../../api/lists';
 import defineBlock from '../../../utils/defineBlock';
 import './LanguagesList.scss';
@@ -28,7 +30,11 @@ const LanguagesList = () => {
           {languages.map((language) => (
             <tr key={language.code}>
               <td>{language.code}</td>
-              <td>{language.name}</td>
+              <td>
+                <Link to={`/${paths.LANGUAGE}/${language.code}`}>
+                  {language.name}
+                </Link>
+              </td>
             </tr>
           ))}
         </tbody>

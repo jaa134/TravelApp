@@ -1,8 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
 import Skeleton from '@mui/material/Skeleton';
 import Typography from '@mui/material/Typography';
+import { paths } from '../../../constants';
 import { useListContinentsQuery } from '../../../api/lists';
 import defineBlock from '../../../utils/defineBlock';
 import './ContinentsList.scss';
@@ -28,7 +30,11 @@ const ContinentsList = () => {
           {continents.map((continent) => (
             <tr key={continent.code}>
               <td>{continent.code}</td>
-              <td>{continent.name}</td>
+              <td>
+                <Link to={`/${paths.CONTINENT}/${continent.code}`}>
+                  {continent.name}
+                </Link>
+              </td>
             </tr>
           ))}
         </tbody>
