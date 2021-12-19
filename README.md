@@ -21,6 +21,7 @@ Procedure
 - Docker
 - React v17
 - GraphQL
+- GraphiQL
 - Sass
 - Jest
 - Enzyme

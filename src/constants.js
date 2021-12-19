@@ -2,5 +2,7 @@ export const paths = {
   GRID: 'grid',
   LIST: 'list',
   MAP: 'map',
-  RANDOM: 'random'
+  FAVORITES: 'favorites',
+  RANDOM: 'random',
+  GRAPHIQL: 'graphiql'
 };

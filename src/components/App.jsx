@@ -27,27 +27,29 @@ import ListIcon from '@mui/icons-material/List';
 import MapIcon from '@mui/icons-material/Map';
 import MenuIcon from '@mui/icons-material/Menu';
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
+import TerminalIcon from '@mui/icons-material/Terminal';
 import logoSrc from '../assets/images/map.svg';
 import { paths } from '../constants';
 import defineBlock from '../utils/defineBlock';
 import CountriesList from './views/list/CountriesList';
+import GraphqlIDE from './utilities/graphiql/GraphqlIDE';
 import './App.scss';
 
 export const bem = defineBlock('App');
 
 const views = [
   {
-    type: 'Grid',
+    name: 'Grid',
     icon: <GridViewIcon />,
     href: paths.GRID
   },
   {
-    type: 'List',
+    name: 'List',
     icon: <ListIcon />,
     href: paths.LIST
   },
   {
-    type: 'Map',
+    name: 'Map',
     icon: <MapIcon />,
     href: paths.MAP
   }
@@ -55,14 +57,19 @@ const views = [
 
 const utilities = [
   {
-    type: 'Favorites',
+    name: 'Favorites',
     icon: <FavoriteIcon />,
+    href: paths.FAVORITES
+  },
+  {
+    name: 'Random',
+    icon: <QuestionMarkIcon />,
     href: paths.RANDOM
   },
   {
-    type: 'Random',
-    icon: <QuestionMarkIcon />,
-    href: paths.RANDOM
+    name: 'GraphiQL',
+    icon: <TerminalIcon />,
+    href: paths.GRAPHIQL
   }
 ];
 
@@ -100,7 +107,7 @@ const App = () => {
           >
             GeoPlanner
           </Typography>
-          <Box sx={{ flexGrow: 1 }}  />
+          <Box sx={{ flexGrow: 1 }} />
           <Tooltip title="Open user menu">
             <IconButton onClick={(event) => { setAnchorElUser(event.currentTarget); }}>
               <Avatar />
@@ -112,15 +119,15 @@ const App = () => {
             anchorEl={anchorElUser}
             anchorOrigin={{
               vertical: 'top',
-              horizontal: 'right',
+              horizontal: 'right'
             }}
             keepMounted
             transformOrigin={{
               vertical: 'top',
-              horizontal: 'right',
+              horizontal: 'right'
             }}
             open={Boolean(anchorElUser)}
-            onClose={()=> { setAnchorElUser(null); }}
+            onClose={() => { setAnchorElUser(null); }}
           >
             {userMenuItems.map((setting) => (
               <MenuItem key={setting}>
@@ -142,16 +149,16 @@ const App = () => {
           aria-labelledby={bem('views')}
           subheader={(
             <ListSubheader component="div" id={bem('views')}>
-              View types
+              Views
             </ListSubheader>
           )}
         >
           {views.map((view) => (
-            <ListItem key={view.type} button component={Link} to={view.href}>
+            <ListItem key={view.name} button component={Link} to={view.href}>
               <ListItemIcon>
                 {view.icon}
               </ListItemIcon>
-              <ListItemText primary={view.type} />
+              <ListItemText primary={view.name} />
             </ListItem>
           ))}
         </List>
@@ -167,11 +174,11 @@ const App = () => {
           )}
         >
           {utilities.map((view) => (
-            <ListItem key={view.type} button component={Link} to={view.href}>
+            <ListItem key={view.name} button component={Link} to={view.href}>
               <ListItemIcon>
                 {view.icon}
               </ListItemIcon>
-              <ListItemText primary={view.type} />
+              <ListItemText primary={view.name} />
             </ListItem>
           ))}
         </List>
@@ -185,7 +192,9 @@ const App = () => {
           <Route path={paths.GRID} element={<div />} exact />
           <Route path={paths.LIST} element={<CountriesList />} exact />
           <Route path={paths.MAP} element={<div />} exact />
+          <Route path={paths.FAVORITES} element={<div />} exact />
           <Route path={paths.RANDOM} element={<div />} exact />
+          <Route path={paths.GRAPHIQL} element={<GraphqlIDE />} exact />
           <Route path="*" element={<Navigate replace to={paths.GRID} />} />
         </Routes>
       </Box>

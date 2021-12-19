@@ -47,6 +47,7 @@
     "@fontsource/roboto": "^4.5.1",
     "@mui/icons-material": "^5.2.4",
     "@mui/material": "^5.2.3",
+    "graphiql": "^1.5.16",
     "graphql": "^16.1.0",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
