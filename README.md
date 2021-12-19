@@ -1,24 +1,6 @@
 # TravelApp
 A front end app to help users plan trips to other countries
 
-### Process
-Procedure
-1. Define the problem
-2. Define solution requirements
-3. Conduct market research
-4. Reevaluate solution requirements
-5. Come up with UI/UX design
-6. Write test cases (TDD)
-7. Implement
-8. Iterate and improve
-
-### TODO
-- Flush out the design for list/grid views. I should probably reconsider main navigation and turn it into [Continents, Countries, Languages].
-- Add more routes to explore areas by continent > cities > languages
-- Add functionality for favorites/random pages
-- Add more tests
-- consider using Parcel in the future for quicker project configuration
-
 ## Technologies
 - Webpack
 - Babel
