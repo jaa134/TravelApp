@@ -12,6 +12,9 @@ import './RandomCountry.scss';
 
 const bem = defineBlock('RandomCountry');
 
+// Wait 3 seconds before navigation
+const timeUntilNav = 3000;
+
 const RandomCountry = () => {
   const { countries, countriesLoading, countriesError } = useListCountriesQuery();
   const [country, setCountry] = useState(null);
@@ -26,7 +29,7 @@ const RandomCountry = () => {
       setCountry(countries[randomIndex]);
       timer = setTimeout(() => {
         setShouldNavigate(true);
-      }, 3000);
+      }, timeUntilNav);
     }
     return () => clearTimeout(timer);
   }, [countries.length]);
