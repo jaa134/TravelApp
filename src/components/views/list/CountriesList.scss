@@ -1,0 +1,12 @@
+.CountriesList {
+  &__table {
+    td {
+      vertical-align: middle;
+      padding: 1rem 0.5rem;
+    }
+  }
+  &__emoji {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+  }
+}

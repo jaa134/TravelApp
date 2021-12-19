@@ -6,12 +6,18 @@ const COUNTRIES = gql`
     countries {
       name
       code
+      emoji
     }
   }
 `;
 
 export const useListCountriesQuery = () => {
-  const { data, loading, error } = useQuery(COUNTRIES);
+  const { data, loading, error } = useQuery(COUNTRIES, {
+    fetchPolicy: 'cache-first'
+  });
+  if (error) {
+    console.error(error);
+  }
   return {
     countries: data?.countries || [],
     countriesLoading: loading,
