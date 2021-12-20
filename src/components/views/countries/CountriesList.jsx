@@ -6,7 +6,6 @@ import { useListCountriesQuery } from '../../../api/lists';
 import defineBlock from '../../../utils/defineBlock';
 import NetworkErrorAlert from '../../common/NetworkErrorAlert';
 import CountryCard from './CountryCard';
-import './CountriesList.scss';
 
 const bem = defineBlock('CountriesList');
 

@@ -40,9 +40,12 @@ Procedure
 24. Allow favoriting items from lists and detail views
 25. Update ui shell for eassier navigation
 26. Allow users to clear user data
+27. Update list view 
 
 ### TODO
-- Flush out the design for list and detail views. Use a reusable component for layouts
+- Flush out the design for home page.
+- Flush out the design for random page.
+- Flush out the design for detail views.
 - Support filtering for list views using client side filtering
 - Add more tests
 - consider using Parcel in the future for quicker project configuration
