@@ -10,19 +10,44 @@ import './CountriesList.scss';
 
 const bem = defineBlock('CountriesList');
 
+const NUM_LOADING_MOCKS = 100;
+const CARD_HEIGHT = 178;
+
 const CountriesList = () => {
   const { countries, countriesLoading, countriesError } = useListCountriesQuery();
   let content = null;
-  if (countriesLoading) {
-    content = <Skeleton variant="rectangular" height={200} />;
-  } else if (countriesError) {
+  if (countriesError) {
     content = <NetworkErrorAlert />;
   } else {
+    let gridItems = null;
+    if (countriesLoading) {
+      gridItems = [...Array(NUM_LOADING_MOCKS)].map((_, i) => ({
+        key: i,
+        component: (
+          <Skeleton
+            variant="rectangular"
+            height={CARD_HEIGHT}
+          />
+        )
+      }));
+    } else {
+      gridItems = countries.map((country) => ({
+        key: country.code,
+        component: (
+          <CountryCard
+            code={country.code}
+            name={country.name}
+            emoji={country.emoji}
+            type={country.__typename}
+          />
+        )
+      }));
+    }
     content = (
       <Grid container spacing={2}>
-        {countries.map((country) => (
+        {gridItems.map((item) => (
           <Grid
-            key={country.code}
+            key={item.key}
             item
             xs={12}
             sm={12}
@@ -30,12 +55,7 @@ const CountriesList = () => {
             lg={4}
             xl={4}
           >
-            <CountryCard
-              code={country.code}
-              name={country.name}
-              emoji={country.emoji}
-              type={country.__typename}
-            />
+            {item.component}
           </Grid>
         ))}
       </Grid>
