@@ -32,6 +32,7 @@ Procedure
 17. Add navigationto to details pages from list views
 17. Make initial detail views for continents, countries, and languages
 18. Develop a reusable component for graphql errors
+19. Develop a reusable component for common links
 
 ### TODO
 - Create a home page that explains the website.

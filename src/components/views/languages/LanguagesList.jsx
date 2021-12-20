@@ -1,11 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Skeleton from '@mui/material/Skeleton';
 import Typography from '@mui/material/Typography';
-import { paths } from '../../../constants';
 import { useListLanguagesQuery } from '../../../api/lists';
 import defineBlock from '../../../utils/defineBlock';
 import NetworkErrorAlert from '../../common/NetworkErrorAlert';
+import { LanguageLink } from '../../common/Links';
 import './LanguagesList.scss';
 
 const bem = defineBlock('LanguagesList');
@@ -25,9 +24,7 @@ const LanguagesList = () => {
             <tr key={language.code}>
               <td>{language.code}</td>
               <td>
-                <Link to={`/${paths.LANGUAGE}/${language.code}`}>
-                  {language.name}
-                </Link>
+                <LanguageLink code={language.code} name={language.name} />
               </td>
             </tr>
           ))}

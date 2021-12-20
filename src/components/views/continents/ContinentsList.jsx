@@ -1,11 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Skeleton from '@mui/material/Skeleton';
 import Typography from '@mui/material/Typography';
-import { paths } from '../../../constants';
 import { useListContinentsQuery } from '../../../api/lists';
 import defineBlock from '../../../utils/defineBlock';
 import NetworkErrorAlert from '../../common/NetworkErrorAlert';
+import { ContinentLink } from '../../common/Links';
 import './ContinentsList.scss';
 
 const bem = defineBlock('ContinentsList');
@@ -25,9 +24,7 @@ const ContinentsList = () => {
             <tr key={continent.code}>
               <td>{continent.code}</td>
               <td>
-                <Link to={`/${paths.CONTINENT}/${continent.code}`}>
-                  {continent.name}
-                </Link>
+                <ContinentLink code={continent.code} name={continent.name} />
               </td>
             </tr>
           ))}

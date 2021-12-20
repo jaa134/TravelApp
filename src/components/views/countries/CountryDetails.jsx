@@ -1,11 +1,11 @@
 import React from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import Skeleton from '@mui/material/Skeleton';
 import Typography from '@mui/material/Typography';
-import { paths } from '../../../constants';
 import { useCountryDetailsQuery } from '../../../api/details';
 import defineBlock from '../../../utils/defineBlock';
 import NetworkErrorAlert from '../../common/NetworkErrorAlert';
+import { ContinentLink, LanguageLink } from '../../common/Links';
 import './CountryDetails.scss';
 
 const bem = defineBlock('CountryDetails');
@@ -38,9 +38,7 @@ const CountryDetails = () => {
             <dd>{country.phone}</dd>
             <dt>Continent</dt>
             <dd>
-              <Link to={`/${paths.CONTINENT}/${country.continent.code}`}>
-                {country.continent.name}
-              </Link>
+              <ContinentLink code={country.continent.code} name={country.continent.name} />
             </dd>
             <dt>Capital</dt>
             <dd>{country.capital}</dd>
@@ -61,9 +59,7 @@ const CountryDetails = () => {
               <ul>
                 {country.languages.map((language) => (
                   <li key={language.code}>
-                    <Link to={`/${paths.LANGUAGE}/${language.code}`}>
-                      {language.name}
-                    </Link>
+                    <LanguageLink code={language.code} name={language.name} />
                   </li>
                 ))}
               </ul>
