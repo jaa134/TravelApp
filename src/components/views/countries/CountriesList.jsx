@@ -84,7 +84,9 @@ const CountriesList = ({
   }
   return (
     <div className={bem()}>
-      <Typography variant="h4" gutterBottom>Countries</Typography>
+      <Typography variant="h4" gutterBottom sx={{ fontWeight: 'light' }}>
+        Countries
+      </Typography>
       {content}
     </div>
   );

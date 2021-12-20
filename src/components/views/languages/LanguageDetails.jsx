@@ -38,7 +38,9 @@ const LanguageDetails = () => {
   }
   return (
     <div className={bem()}>
-      <Typography variant="h4" gutterBottom>Language details</Typography>
+      <Typography variant="h4" gutterBottom sx={{ fontWeight: 'light' }}>
+        Language details
+      </Typography>
       {content}
     </div>
   );

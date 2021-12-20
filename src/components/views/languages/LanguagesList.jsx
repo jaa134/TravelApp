@@ -83,7 +83,9 @@ const LanguagesList = ({
   }
   return (
     <div className={bem()}>
-      <Typography variant="h4" gutterBottom>Languages</Typography>
+      <Typography variant="h4" gutterBottom sx={{ fontWeight: 'light' }}>
+        Languages
+      </Typography>
       {content}
     </div>
   );

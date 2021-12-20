@@ -20,7 +20,7 @@ const RandomPage = () => {
   const randomIndex = Math.floor(Math.random() * pages.length);
   return (
     <div className={bem()}>
-      <Typography variant="h4" gutterBottom>
+      <Typography variant="h4" gutterBottom sx={{ fontWeight: 'light' }}>
         Random
       </Typography>
       <Typography className={bem('subheader')} variant="h5" gutterBottom>

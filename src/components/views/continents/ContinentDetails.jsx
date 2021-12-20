@@ -61,7 +61,9 @@ const ContinentDetails = () => {
   }
   return (
     <div className={bem()}>
-      <Typography variant="h4" gutterBottom>Continent details</Typography>
+      <Typography variant="h4" gutterBottom sx={{ fontWeight: 'light' }}>
+        Continent details
+      </Typography>
       {content}
     </div>
   );
