@@ -5,14 +5,14 @@ import Skeleton from '@mui/material/Skeleton';
 import Typography from '@mui/material/Typography';
 import { useListLanguagesQuery } from '../../../api/lists';
 import defineBlock from '../../../utils/defineBlock';
-import NetworkErrorAlert from '../../common/NetworkErrorAlert';
+import RequestErrorAlert from '../../common/RequestErrorAlert';
 import NoItemsAlert from '../../common/NoItemsAlert';
 import { useFavorites } from '../../utilities/favorites/FavoritesProvider';
 import LanguageCard from './LanguageCard';
 
-const bem = defineBlock('LanguagesList');
+export const bem = defineBlock('LanguagesList');
 
-const NUM_LOADING_MOCKS = 25;
+export const NUM_LOADING_MOCKS = 25;
 const CARD_HEIGHT = 150;
 
 const LanguagesList = ({
@@ -33,7 +33,7 @@ const LanguagesList = ({
 
   let content = null;
   if (languagesError) {
-    content = <NetworkErrorAlert />;
+    content = <RequestErrorAlert />;
   } else {
     let gridItems = null;
     if (languagesLoading) {

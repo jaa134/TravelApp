@@ -15,7 +15,7 @@ describe('LabeledDetail', () => {
       </TestWrapper>
     );
     const labeledDetail = wrapper.find(`.${bem()}`);
-    expect(labeledDetail.exists()).toBeTruthy();
+    expect(labeledDetail.exists()).toBe(true);
     expect(labeledDetail.find(`.${bem('label')}`).text()).toBe(detail.label);
     expect(labeledDetail.find(`.${bem('value')}`).text()).toBe(detail.value);
   });

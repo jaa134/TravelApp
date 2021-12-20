@@ -6,7 +6,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { paths } from '../../../constants';
 import { useListCountriesQuery } from '../../../api/lists';
 import defineBlock from '../../../utils/defineBlock';
-import NetworkErrorAlert from '../../common/NetworkErrorAlert';
+import RequestErrorAlert from '../../common/RequestErrorAlert';
 import CountryCard from '../../views/countries/CountryCard';
 import './RandomCountry.scss';
 
@@ -41,7 +41,7 @@ const RandomCountry = ({
       </Box>
     );
   } else if (countriesError) {
-    content = <NetworkErrorAlert />;
+    content = <RequestErrorAlert />;
   } else if (shouldNavigate) {
     content = (
       <Navigate to={`/${paths.COUNTRY}/${country.code}`} />

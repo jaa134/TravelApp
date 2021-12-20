@@ -1,6 +1,6 @@
 import { gql, useQuery } from '@apollo/client';
 
-const LIST_CONTINENTS = gql`
+export const LIST_CONTINENTS = gql`
   query ContinentsList {
     continents {
       code
@@ -23,7 +23,7 @@ export const useListContinentsQuery = () => {
   };
 };
 
-const LIST_COUNTRIES = gql`
+export const LIST_COUNTRIES = gql`
   query CountriesList {
     countries {
       code
@@ -47,7 +47,7 @@ export const useListCountriesQuery = () => {
   };
 };
 
-const LIST_LANGUAGES = gql`
+export const LIST_LANGUAGES = gql`
   query LanguagesList {
     languages {
       code

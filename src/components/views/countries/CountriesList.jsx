@@ -5,14 +5,14 @@ import Skeleton from '@mui/material/Skeleton';
 import Typography from '@mui/material/Typography';
 import { useListCountriesQuery } from '../../../api/lists';
 import defineBlock from '../../../utils/defineBlock';
-import NetworkErrorAlert from '../../common/NetworkErrorAlert';
+import RequestErrorAlert from '../../common/RequestErrorAlert';
 import NoItemsAlert from '../../common/NoItemsAlert';
 import { useFavorites } from '../../utilities/favorites/FavoritesProvider';
 import CountryCard from './CountryCard';
 
-const bem = defineBlock('CountriesList');
+export const bem = defineBlock('CountriesList');
 
-const NUM_LOADING_MOCKS = 25;
+export const NUM_LOADING_MOCKS = 25;
 const CARD_HEIGHT = 182;
 
 const CountriesList = ({
@@ -33,7 +33,7 @@ const CountriesList = ({
 
   let content = null;
   if (countriesError) {
-    content = <NetworkErrorAlert />;
+    content = <RequestErrorAlert />;
   } else {
     let gridItems = null;
     if (countriesLoading) {

@@ -5,7 +5,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Typography from '@mui/material/Typography';
 import { useCountryDetailsQuery } from '../../../api/details';
 import defineBlock from '../../../utils/defineBlock';
-import NetworkErrorAlert from '../../common/NetworkErrorAlert';
+import RequestErrorAlert from '../../common/RequestErrorAlert';
 import NotFoundAlert from '../../common/NotFoundAlert';
 import LabeledDetail from '../../common/LabeledDetail';
 import FavoriteButton from '../../utilities/favorites/FavoriteButton';
@@ -23,7 +23,7 @@ const CountryDetails = () => {
   if (countryLoading) {
     content = <CircularProgress />;
   } else if (countryError) {
-    content = <NetworkErrorAlert />;
+    content = <RequestErrorAlert />;
   } else if (!country) {
     content = <NotFoundAlert />;
   } else {

@@ -6,7 +6,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { paths } from '../../../constants';
 import { useListLanguagesQuery } from '../../../api/lists';
 import defineBlock from '../../../utils/defineBlock';
-import NetworkErrorAlert from '../../common/NetworkErrorAlert';
+import RequestErrorAlert from '../../common/RequestErrorAlert';
 import LanguageCard from '../../views/languages/LanguageCard';
 import './RandomLanguage.scss';
 
@@ -41,7 +41,7 @@ const RandomLanguage = ({
       </Box>
     );
   } else if (languagesError) {
-    content = <NetworkErrorAlert />;
+    content = <RequestErrorAlert />;
   } else if (shouldNavigate) {
     content = (
       <Navigate to={`/${paths.LANGUAGE}/${language.code}`} />

@@ -14,49 +14,55 @@ describe('FavoriteButton', () => {
     </TestWrapper>
   );
 
+  const getFavoriteButton = (wrapper) => wrapper.find(`.${bem()}`);
+
   beforeEach(() => {
     localStorage.clear();
   });
 
-  // TODO: find out why the icon wont update even though you can see
-  // state changing. Note, this is only a problem in tests.
-  test.skip('Can toggle favorite and remembers state between component instances', async () => {
+  test('Can toggle favorite and remembers state between component instances', async () => {
     // create a button and toggle it back and forth
     const props = { code: 'foo', type: 'bar' };
     let wrapper = getWrapper(props.code, props.type);
-    let favoriteButton = wrapper.find(`.${bem()}`);
-    expect(favoriteButton.exists()).toBeTruthy();
-    expect(favoriteButton.find(favIconDefault).exists()).toBeTruthy();
-    expect(favoriteButton.find(favIconActive).exists()).toBeFalsy();
-    favoriteButton.find(favIconDefault).simulate('click');
+    expect(getFavoriteButton(wrapper).exists()).toBe(true);
+
+    // ensure the button is not favorited
+    expect(getFavoriteButton(wrapper).find(favIconDefault).exists()).toBe(true);
+    expect(getFavoriteButton(wrapper).find(favIconActive).exists()).toBe(false);
+
+    // click the button to favorite
+    getFavoriteButton(wrapper).find(favIconDefault).simulate('click');
     await updateWrapper(wrapper);
-    expect(favoriteButton.find(favIconActive).exists()).toBeTruthy();
-    expect(favoriteButton.find(favIconDefault).exists()).toBeFalsy();
-    favoriteButton.find(favIconActive).simulate('click');
+
+    // ensure the button is favorited
+    expect(getFavoriteButton(wrapper).find(favIconActive).exists()).toBe(true);
+    expect(getFavoriteButton(wrapper).find(favIconDefault).exists()).toBe(false);
+
+    // click the button to unfavorite
+    getFavoriteButton(wrapper).find(favIconActive).simulate('click');
     await updateWrapper(wrapper);
-    expect(favoriteButton.find(favIconDefault).exists()).toBeTruthy();
-    expect(favoriteButton.find(favIconActive).exists()).toBeFalsy();
+
+    // ensure the button is not favorited
+    expect(getFavoriteButton(wrapper).find(favIconDefault).exists()).toBe(true);
+    expect(getFavoriteButton(wrapper).find(favIconActive).exists()).toBe(false);
 
     // recreate the same instance and ensure it is still not favorited
     wrapper = getWrapper(props.code, props.type);
-    favoriteButton = wrapper.find(`.${bem()}`);
-    expect(favoriteButton.find(favIconDefault).exists()).toBeTruthy();
-    expect(favoriteButton.find(favIconActive).exists()).toBeFalsy();
+    expect(getFavoriteButton(wrapper).find(favIconDefault).exists()).toBe(true);
+    expect(getFavoriteButton(wrapper).find(favIconActive).exists()).toBe(false);
 
     // click the button to favorite
-    favoriteButton.find(favIconDefault).simulate('click');
+    getFavoriteButton(wrapper).find(favIconDefault).simulate('click');
     await updateWrapper(wrapper);
 
     // recreate the same instance and ensure it is still favorited
     wrapper = getWrapper(props.code, props.type);
-    favoriteButton = wrapper.find(`.${bem()}`);
-    expect(favoriteButton.find(favIconActive).exists()).toBeTruthy();
-    expect(favoriteButton.find(favIconDefault).exists()).toBeFalsy();
+    expect(getFavoriteButton(wrapper).find(favIconActive).exists()).toBe(true);
+    expect(getFavoriteButton(wrapper).find(favIconDefault).exists()).toBe(false);
 
     // create a new button with different prop values and ensure it is not favorited
     wrapper = getWrapper('new', 'values');
-    favoriteButton = wrapper.find(`.${bem()}`);
-    expect(favoriteButton.find(favIconDefault).exists()).toBeTruthy();
-    expect(favoriteButton.find(favIconActive).exists()).toBeFalsy();
+    expect(getFavoriteButton(wrapper).find(favIconDefault).exists()).toBe(true);
+    expect(getFavoriteButton(wrapper).find(favIconActive).exists()).toBe(false);
   });
 });

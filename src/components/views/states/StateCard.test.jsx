@@ -18,7 +18,7 @@ describe('StateCard', () => {
   );
 
   const validateBase = (stateCard) => {
-    expect(stateCard.exists()).toBeTruthy();
+    expect(stateCard.exists()).toBe(true);
     expect(stateCard.find(`div.${bem('name')}`).text()).toBe(state.name);
   };
 
@@ -36,7 +36,7 @@ describe('StateCard', () => {
     validateBase(stateCard);
     expect(stateCard.find('LabeledDetail').at(0).prop('label')).toBe('Code');
     expect(stateCard.find('LabeledDetail').at(0).prop('value')).toBe(state.code);
-    expect(stateCard.find('LabeledDetail').at(1).exists()).toBeFalsy();
+    expect(stateCard.find('LabeledDetail').at(1).exists()).toBe(false);
   });
 
   test('Shows required data - with type', () => {
@@ -47,6 +47,6 @@ describe('StateCard', () => {
     expect(stateCard.find('LabeledDetail').at(0).prop('value')).toBe(state.__typename);
     expect(stateCard.find('LabeledDetail').at(1).prop('label')).toBe('Code');
     expect(stateCard.find('LabeledDetail').at(1).prop('value')).toBe(state.code);
-    expect(stateCard.find('LabeledDetail').at(2).exists()).toBeFalsy();
+    expect(stateCard.find('LabeledDetail').at(2).exists()).toBe(false);
   });
 });

@@ -5,7 +5,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Typography from '@mui/material/Typography';
 import { useContinentDetailsQuery } from '../../../api/details';
 import defineBlock from '../../../utils/defineBlock';
-import NetworkErrorAlert from '../../common/NetworkErrorAlert';
+import RequestErrorAlert from '../../common/RequestErrorAlert';
 import NotFoundAlert from '../../common/NotFoundAlert';
 import LabeledDetail from '../../common/LabeledDetail';
 import FavoriteButton from '../../utilities/favorites/FavoriteButton';
@@ -21,7 +21,7 @@ const ContinentDetails = () => {
   if (continentLoading) {
     content = <CircularProgress />;
   } else if (continentError) {
-    content = <NetworkErrorAlert />;
+    content = <RequestErrorAlert />;
   } else if (!continent) {
     content = <NotFoundAlert />;
   } else {

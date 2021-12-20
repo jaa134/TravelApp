@@ -6,9 +6,9 @@
 import React, { createContext, useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 
-const FAVORITES_STORAGE_KEY = 'myFavorites';
+export const FAVORITES_STORAGE_KEY = 'myFavorites';
 
-const getItemmKey = (code, type) => `${type}-${code}`;
+export const getItemmKey = (code, type) => `${type}-${code}`;
 
 const getFavoritesFromLocalStorage = () => {
   let result = {};

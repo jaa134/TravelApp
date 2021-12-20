@@ -4,7 +4,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Typography from '@mui/material/Typography';
 import { useLanguageDetailsQuery } from '../../../api/details';
 import defineBlock from '../../../utils/defineBlock';
-import NetworkErrorAlert from '../../common/NetworkErrorAlert';
+import RequestErrorAlert from '../../common/RequestErrorAlert';
 import NotFoundAlert from '../../common/NotFoundAlert';
 import LabeledDetail from '../../common/LabeledDetail';
 import FavoriteButton from '../../utilities/favorites/FavoriteButton';
@@ -19,7 +19,7 @@ const LanguageDetails = () => {
   if (languageLoading) {
     content = <CircularProgress />;
   } else if (languageError) {
-    content = <NetworkErrorAlert />;
+    content = <RequestErrorAlert />;
   } else if (!language) {
     content = <NotFoundAlert />;
   } else {

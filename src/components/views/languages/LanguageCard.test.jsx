@@ -18,10 +18,10 @@ describe('LanguageCard', () => {
   );
 
   const validateBase = (languageCard) => {
-    expect(languageCard.exists()).toBeTruthy();
+    expect(languageCard.exists()).toBe(true);
     expect(languageCard.find(`div.${bem('name')}`).text()).toBe(language.name);
-    expect(languageCard.find('FavoriteButton').exists()).toBeTruthy();
-    expect(languageCard.find('LanguageLink').exists()).toBeTruthy();
+    expect(languageCard.find('FavoriteButton').exists()).toBe(true);
+    expect(languageCard.find('LanguageLink').exists()).toBe(true);
     expect(languageCard.find('FavoriteButton').at(0).prop('code')).toBe(language.code);
     expect(languageCard.find('FavoriteButton').at(0).prop('type')).toBe(language.__typename);
     expect(languageCard.find('LanguageLink').at(0).prop('code')).toBe(language.code);
@@ -42,7 +42,7 @@ describe('LanguageCard', () => {
     validateBase(languageCard);
     expect(languageCard.find('LabeledDetail').at(0).prop('label')).toBe('Code');
     expect(languageCard.find('LabeledDetail').at(0).prop('value')).toBe(language.code);
-    expect(languageCard.find('LabeledDetail').at(1).exists()).toBeFalsy();
+    expect(languageCard.find('LabeledDetail').at(1).exists()).toBe(false);
   });
 
   test('Shows required data - with type', () => {
@@ -53,6 +53,6 @@ describe('LanguageCard', () => {
     expect(languageCard.find('LabeledDetail').at(0).prop('value')).toBe(language.__typename);
     expect(languageCard.find('LabeledDetail').at(1).prop('label')).toBe('Code');
     expect(languageCard.find('LabeledDetail').at(1).prop('value')).toBe(language.code);
-    expect(languageCard.find('LabeledDetail').at(2).exists()).toBeFalsy();
+    expect(languageCard.find('LabeledDetail').at(2).exists()).toBe(false);
   });
 });

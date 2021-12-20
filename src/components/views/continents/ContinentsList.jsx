@@ -5,14 +5,14 @@ import Skeleton from '@mui/material/Skeleton';
 import Typography from '@mui/material/Typography';
 import { useListContinentsQuery } from '../../../api/lists';
 import defineBlock from '../../../utils/defineBlock';
-import NetworkErrorAlert from '../../common/NetworkErrorAlert';
+import RequestErrorAlert from '../../common/RequestErrorAlert';
 import NoItemsAlert from '../../common/NoItemsAlert';
 import { useFavorites } from '../../utilities/favorites/FavoritesProvider';
 import ContinentCard from './ContinentCard';
 
-const bem = defineBlock('ContinentsList');
+export const bem = defineBlock('ContinentsList');
 
-const NUM_LOADING_MOCKS = 7;
+export const NUM_LOADING_MOCKS = 7;
 const CARD_HEIGHT = 150;
 
 const ContinentsList = ({
@@ -33,7 +33,7 @@ const ContinentsList = ({
 
   let content = null;
   if (continentsError) {
-    content = <NetworkErrorAlert />;
+    content = <RequestErrorAlert />;
   } else {
     let gridItems = null;
     if (continentsLoading) {

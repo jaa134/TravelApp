@@ -18,10 +18,10 @@ describe('ContinentCard', () => {
   );
 
   const validateBase = (continentCard) => {
-    expect(continentCard.exists()).toBeTruthy();
+    expect(continentCard.exists()).toBe(true);
     expect(continentCard.find(`div.${bem('name')}`).text()).toBe(continent.name);
-    expect(continentCard.find('FavoriteButton').exists()).toBeTruthy();
-    expect(continentCard.find('ContinentLink').exists()).toBeTruthy();
+    expect(continentCard.find('FavoriteButton').exists()).toBe(true);
+    expect(continentCard.find('ContinentLink').exists()).toBe(true);
     expect(continentCard.find('FavoriteButton').at(0).prop('code')).toBe(continent.code);
     expect(continentCard.find('FavoriteButton').at(0).prop('type')).toBe(continent.__typename);
     expect(continentCard.find('ContinentLink').at(0).prop('code')).toBe(continent.code);
@@ -42,7 +42,7 @@ describe('ContinentCard', () => {
     validateBase(continentCard);
     expect(continentCard.find('LabeledDetail').at(0).prop('label')).toBe('Code');
     expect(continentCard.find('LabeledDetail').at(0).prop('value')).toBe(continent.code);
-    expect(continentCard.find('LabeledDetail').at(1).exists()).toBeFalsy();
+    expect(continentCard.find('LabeledDetail').at(1).exists()).toBe(false);
   });
 
   test('Shows required data - with type', () => {
@@ -53,6 +53,6 @@ describe('ContinentCard', () => {
     expect(continentCard.find('LabeledDetail').at(0).prop('value')).toBe(continent.__typename);
     expect(continentCard.find('LabeledDetail').at(1).prop('label')).toBe('Code');
     expect(continentCard.find('LabeledDetail').at(1).prop('value')).toBe(continent.code);
-    expect(continentCard.find('LabeledDetail').at(2).exists()).toBeFalsy();
+    expect(continentCard.find('LabeledDetail').at(2).exists()).toBe(false);
   });
 });
