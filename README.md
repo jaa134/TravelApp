@@ -15,9 +15,11 @@ Are you more of a techinical user? Do you have a background with GraphQL develop
 - Babel
 - Docker
 - React v17
+- Apollo Client
 - GraphQL
 - GraphiQL
 - Sass
+- ESLint
 - Jest
 - Enzyme
 - Material UI
