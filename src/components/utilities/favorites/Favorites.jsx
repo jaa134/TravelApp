@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import Box from '@mui/material/Box';
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
 import defineBlock from '../../../utils/defineBlock';
+import PageTitle from '../../common/PageTitle';
 import ContinentsList from '../../views/continents/ContinentsList';
 import CountriesList from '../../views/countries/CountriesList';
 import LanguagesList from '../../views/languages/LanguagesList';
@@ -18,9 +18,7 @@ const Favorites = () => {
   };
   return (
     <div className={bem()}>
-      <Typography variant="h4" gutterBottom sx={{ fontWeight: 'light' }}>
-        Favorites
-      </Typography>
+      <PageTitle text="Favorites" />
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={selectedTab} onChange={handleTabChange}>
           <Tab label="Continents" />

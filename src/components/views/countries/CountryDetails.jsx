@@ -5,6 +5,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Typography from '@mui/material/Typography';
 import { useCountryDetailsQuery } from '../../../api/details';
 import defineBlock from '../../../utils/defineBlock';
+import PageTitle from '../../common/PageTitle';
 import RequestErrorAlert from '../../common/RequestErrorAlert';
 import NotFoundAlert from '../../common/NotFoundAlert';
 import LabeledDetail from '../../common/LabeledDetail';
@@ -113,9 +114,7 @@ const CountryDetails = () => {
   }
   return (
     <div className={bem()}>
-      <Typography variant="h4" gutterBottom sx={{ fontWeight: 'light' }}>
-        Country details
-      </Typography>
+      <PageTitle text="Country details" />
       {content}
     </div>
   );

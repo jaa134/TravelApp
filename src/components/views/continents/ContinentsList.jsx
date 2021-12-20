@@ -2,9 +2,9 @@ import React, { useMemo } from 'react';
 import PropTypes from 'prop-types';
 import Grid from '@mui/material/Grid';
 import Skeleton from '@mui/material/Skeleton';
-import Typography from '@mui/material/Typography';
 import { useListContinentsQuery } from '../../../api/lists';
 import defineBlock from '../../../utils/defineBlock';
+import PageTitle from '../../common/PageTitle';
 import RequestErrorAlert from '../../common/RequestErrorAlert';
 import NoItemsAlert from '../../common/NoItemsAlert';
 import { useFavorites } from '../../utilities/favorites/FavoritesProvider';
@@ -83,9 +83,7 @@ const ContinentsList = ({
   }
   return (
     <div className={bem()}>
-      <Typography variant="h4" gutterBottom sx={{ fontWeight: 'light' }}>
-        Continents
-      </Typography>
+      <PageTitle text="Continents" />
       {content}
     </div>
   );

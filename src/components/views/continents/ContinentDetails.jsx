@@ -5,6 +5,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Typography from '@mui/material/Typography';
 import { useContinentDetailsQuery } from '../../../api/details';
 import defineBlock from '../../../utils/defineBlock';
+import PageTitle from '../../common/PageTitle';
 import RequestErrorAlert from '../../common/RequestErrorAlert';
 import NotFoundAlert from '../../common/NotFoundAlert';
 import LabeledDetail from '../../common/LabeledDetail';
@@ -61,9 +62,7 @@ const ContinentDetails = () => {
   }
   return (
     <div className={bem()}>
-      <Typography variant="h4" gutterBottom sx={{ fontWeight: 'light' }}>
-        Continent details
-      </Typography>
+      <PageTitle text="Continent details" />
       {content}
     </div>
   );

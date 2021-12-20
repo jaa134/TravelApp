@@ -4,6 +4,7 @@ import CircularProgress from '@mui/material/CircularProgress';
 import Typography from '@mui/material/Typography';
 import { useLanguageDetailsQuery } from '../../../api/details';
 import defineBlock from '../../../utils/defineBlock';
+import PageTitle from '../../common/PageTitle';
 import RequestErrorAlert from '../../common/RequestErrorAlert';
 import NotFoundAlert from '../../common/NotFoundAlert';
 import LabeledDetail from '../../common/LabeledDetail';
@@ -38,9 +39,7 @@ const LanguageDetails = () => {
   }
   return (
     <div className={bem()}>
-      <Typography variant="h4" gutterBottom sx={{ fontWeight: 'light' }}>
-        Language details
-      </Typography>
+      <PageTitle text="Language details" />
       {content}
     </div>
   );
