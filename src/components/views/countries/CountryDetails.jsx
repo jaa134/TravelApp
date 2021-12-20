@@ -50,6 +50,30 @@ const CountryDetails = () => {
             </dd>
             <dt>Capital</dt>
             <dd>{country.capital}</dd>
+            {country.states.length > 0 && (
+              <>
+                <dt>States</dt>
+                <dd>
+                  <ul>
+                    {country.states.map((state) => (
+                      <li key={state.code}>{state.name}</li>
+                    ))}
+                  </ul>
+                </dd>
+              </>
+            )}
+            <dt>Languages</dt>
+            <dd>
+              <ul>
+                {country.languages.map((language) => (
+                  <li key={language.code}>
+                    <Link to={`/${paths.LANGUAGE}/${language.code}`}>
+                      {language.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </dd>
             <dt>Currency</dt>
             <dd>{country.currency}</dd>
           </dl>

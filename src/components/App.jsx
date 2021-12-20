@@ -32,9 +32,11 @@ import logoSrc from '../assets/images/map.svg';
 import { paths } from '../constants';
 import defineBlock from '../utils/defineBlock';
 import ContinentsList from './views/continents/ContinentsList';
+import ContinentDetails from './views/continents/ContinentDetails';
 import CountriesList from './views/countries/CountriesList';
 import CountryDetails from './views/countries/CountryDetails';
 import LanguagesList from './views/languages/LanguagesList';
+import LanguageDetails from './views/languages/LanguageDetails';
 import RandomPage from './utilities/random/RandomPage';
 import GraphqlIDE from './utilities/graphiql/GraphqlIDE';
 import './App.scss';
@@ -199,9 +201,9 @@ const App = () => {
           <Route path={paths.FAVORITES} element={<div />} exact />
           <Route path={paths.RANDOM} element={<RandomPage />} exact />
           <Route path={paths.GRAPHIQL} element={<GraphqlIDE />} exact />
-          <Route path={`${paths.CONTINENT}/:id`} element={<div />} exact />
+          <Route path={`${paths.CONTINENT}/:id`} element={<ContinentDetails />} exact />
           <Route path={`${paths.COUNTRY}/:id`} element={<CountryDetails />} exact />
-          <Route path={`${paths.LANGUAGE}/:id`} element={<div />} exact />
+          <Route path={`${paths.LANGUAGE}/:id`} element={<LanguageDetails />} exact />
           <Route path="*" element={<Navigate replace to={paths.CONTINENTS} />} />
         </Routes>
       </Box>

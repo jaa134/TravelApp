@@ -40,6 +40,14 @@ const DETAILS_COUNTRY = gql`
         name
       }
       capital
+      states {
+        code
+        name
+      }
+      languages {
+        code
+        name
+      }
       currency
       emoji
     }
