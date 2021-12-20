@@ -3,11 +3,11 @@ import { Navigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
-import Typography from '@mui/material/Typography';
-import { paths } from '../../../../constants';
-import { useListLanguagesQuery } from '../../../../api/lists';
-import defineBlock from '../../../../utils/defineBlock';
-import NetworkErrorAlert from '../../../common/NetworkErrorAlert';
+import { paths } from '../../../constants';
+import { useListLanguagesQuery } from '../../../api/lists';
+import defineBlock from '../../../utils/defineBlock';
+import NetworkErrorAlert from '../../common/NetworkErrorAlert';
+import LanguageCard from '../../views/languages/LanguageCard';
 import './RandomLanguage.scss';
 
 const bem = defineBlock('RandomLanguage');
@@ -23,7 +23,7 @@ const RandomLanguage = ({
   // language and initiate a countdown for navigation
   useEffect(() => {
     let timer;
-    if (languages.length > 0) {
+    if (languages?.length > 0) {
       const randomIndex = Math.floor(Math.random() * languages.length);
       setLanguage(languages[randomIndex]);
       timer = setTimeout(() => {
@@ -31,7 +31,7 @@ const RandomLanguage = ({
       }, timeUntilNav);
     }
     return () => clearTimeout(timer);
-  }, [languages.length]);
+  }, [languages]);
 
   let content = null;
   if (languagesLoading) {
@@ -48,21 +48,15 @@ const RandomLanguage = ({
     );
   } else if (language) {
     content = (
-      <>
-        <Typography variant="subtitle1">Hold on tight...</Typography>
-        <Typography variant="body1">
-          You are going to
-          {' '}
-          {language.name}
-        </Typography>
-      </>
+      <LanguageCard
+        code={language.code}
+        name={language.name}
+        type={language.__typename}
+      />
     );
   }
   return (
     <div className={bem()}>
-      <Typography variant="h5">
-        Teleporting you to a random language page!
-      </Typography>
       {content}
     </div>
   );

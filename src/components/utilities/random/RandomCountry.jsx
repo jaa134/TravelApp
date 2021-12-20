@@ -3,11 +3,11 @@ import { Navigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
-import Typography from '@mui/material/Typography';
-import { paths } from '../../../../constants';
-import { useListCountriesQuery } from '../../../../api/lists';
-import defineBlock from '../../../../utils/defineBlock';
-import NetworkErrorAlert from '../../../common/NetworkErrorAlert';
+import { paths } from '../../../constants';
+import { useListCountriesQuery } from '../../../api/lists';
+import defineBlock from '../../../utils/defineBlock';
+import NetworkErrorAlert from '../../common/NetworkErrorAlert';
+import CountryCard from '../../views/countries/CountryCard';
 import './RandomCountry.scss';
 
 const bem = defineBlock('RandomCountry');
@@ -23,7 +23,7 @@ const RandomCountry = ({
   // country and initiate a countdown for navigation
   useEffect(() => {
     let timer;
-    if (countries.length > 0) {
+    if (countries?.length > 0) {
       const randomIndex = Math.floor(Math.random() * countries.length);
       setCountry(countries[randomIndex]);
       timer = setTimeout(() => {
@@ -31,7 +31,7 @@ const RandomCountry = ({
       }, timeUntilNav);
     }
     return () => clearTimeout(timer);
-  }, [countries.length]);
+  }, [countries]);
 
   let content = null;
   if (countriesLoading) {
@@ -48,23 +48,16 @@ const RandomCountry = ({
     );
   } else if (country) {
     content = (
-      <>
-        <Typography variant="subtitle1">Hold on tight...</Typography>
-        <Typography variant="body1">
-          You are going to
-          {' '}
-          {country.emoji}
-          {' '}
-          {country.name}
-        </Typography>
-      </>
+      <CountryCard
+        code={country.code}
+        name={country.name}
+        emoji={country.emoji}
+        type={country.__typename}
+      />
     );
   }
   return (
     <div className={bem()}>
-      <Typography variant="h5">
-        Teleporting you to a random country page!
-      </Typography>
       {content}
     </div>
   );

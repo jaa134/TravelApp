@@ -3,11 +3,11 @@ import { Navigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
-import Typography from '@mui/material/Typography';
-import { paths } from '../../../../constants';
-import { useListContinentsQuery } from '../../../../api/lists';
-import defineBlock from '../../../../utils/defineBlock';
-import NetworkErrorAlert from '../../../common/NetworkErrorAlert';
+import { paths } from '../../../constants';
+import { useListContinentsQuery } from '../../../api/lists';
+import defineBlock from '../../../utils/defineBlock';
+import NetworkErrorAlert from '../../common/NetworkErrorAlert';
+import ContinentCard from '../../views/continents/ContinentCard';
 import './RandomContinent.scss';
 
 const bem = defineBlock('RandomContinent');
@@ -23,7 +23,7 @@ const RandomContinent = ({
   // continent and initiate a countdown for navigation
   useEffect(() => {
     let timer;
-    if (continents.length > 0) {
+    if (continents?.length > 0) {
       const randomIndex = Math.floor(Math.random() * continents.length);
       setContinent(continents[randomIndex]);
       timer = setTimeout(() => {
@@ -31,7 +31,7 @@ const RandomContinent = ({
       }, timeUntilNav);
     }
     return () => clearTimeout(timer);
-  }, [continents.length]);
+  }, [continents]);
 
   let content = null;
   if (continentsLoading) {
@@ -48,21 +48,15 @@ const RandomContinent = ({
     );
   } else if (continent) {
     content = (
-      <>
-        <Typography variant="subtitle1">Hold on tight...</Typography>
-        <Typography variant="body1">
-          You are going to
-          {' '}
-          {continent.name}
-        </Typography>
-      </>
+      <ContinentCard
+        code={continent.code}
+        name={continent.name}
+        type={continent.__typename}
+      />
     );
   }
   return (
     <div className={bem()}>
-      <Typography variant="h5">
-        Teleporting you to a random continent page!
-      </Typography>
       {content}
     </div>
   );

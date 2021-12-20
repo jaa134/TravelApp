@@ -42,10 +42,10 @@ Procedure
 26. Allow users to clear user data
 27. Update design for list views
 28. Finish design and implementation of favorites views
+29. Finish design and implementation of random page
 
 ### TODO
 - Flush out the design for home page.
-- Flush out the design for random page.
 - Flush out the design for detail views.
 - Support filtering for list views using client side filtering
 - Add more tests
