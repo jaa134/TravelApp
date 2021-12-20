@@ -14,7 +14,7 @@ import StateCard from '../states/StateCard';
 import LanguageCard from '../languages/LanguageCard';
 import './CountryDetails.scss';
 
-const bem = defineBlock('CountryDetails');
+export const bem = defineBlock('CountryDetails');
 
 const CountryDetails = () => {
   const params = useParams();

@@ -12,7 +12,7 @@ import FavoriteButton from '../../utilities/favorites/FavoriteButton';
 import CountryCard from '../countries/CountryCard';
 import './ContinentDetails.scss';
 
-const bem = defineBlock('ContinentDetails');
+export const bem = defineBlock('ContinentDetails');
 
 const ContinentDetails = () => {
   const params = useParams();

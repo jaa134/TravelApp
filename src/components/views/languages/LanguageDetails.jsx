@@ -10,7 +10,7 @@ import LabeledDetail from '../../common/LabeledDetail';
 import FavoriteButton from '../../utilities/favorites/FavoriteButton';
 import './LanguageDetails.scss';
 
-const bem = defineBlock('LanguageDetails');
+export const bem = defineBlock('LanguageDetails');
 
 const LanguageDetails = () => {
   const params = useParams();
