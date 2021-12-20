@@ -18,11 +18,7 @@ const Favorites = () => {
   };
   return (
     <div className={bem()}>
-      <Typography
-        variant="h4"
-        component="div"
-        gutterBottom
-      >
+      <Typography variant="h4" gutterBottom sx={{ fontWeight: 'light' }}>
         Favorites
       </Typography>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
