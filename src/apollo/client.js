@@ -1,14 +1,10 @@
-import fetch from 'cross-fetch';
-import { ApolloClient, HttpLink, InMemoryCache } from '@apollo/client';
-
-export const GRAPHQL_URL = 'https://countries.trevorblades.com';
+import { ApolloClient, InMemoryCache, from } from '@apollo/client';
+import httpLink from './httpLink';
+import errorLink from './errorLink';
 
 // initialize a GraphQL client
 const client = new ApolloClient({
-  link: new HttpLink({
-    uri: GRAPHQL_URL,
-    fetch
-  }),
+  link: from([errorLink, httpLink]),
   cache: new InMemoryCache()
 });
 

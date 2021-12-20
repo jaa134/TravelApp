@@ -1,6 +1,6 @@
 import React from 'react';
 import GraphiQL from 'graphiql';
-import { GRAPHQL_URL } from '../../../apollo/client';
+import { GRAPHQL_URL } from '../../../apollo/httpLink';
 import defineBlock from '../../../utils/defineBlock';
 import 'graphiql/graphiql.min.css';
 import './GraphqlIDE.scss';

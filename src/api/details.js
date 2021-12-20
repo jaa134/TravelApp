@@ -19,9 +19,6 @@ export const useContinentDetailsQuery = (continentCode) => {
     fetchPolicy: 'cache-first',
     variables: { code: continentCode }
   });
-  if (error) {
-    console.error(error);
-  }
   return {
     continent: data?.continent,
     continentLoading: loading,
@@ -60,9 +57,6 @@ export const useCountryDetailsQuery = (countryCode) => {
     fetchPolicy: 'cache-first',
     variables: { code: countryCode }
   });
-  if (error) {
-    console.error(error);
-  }
   return {
     country: data?.country,
     countryLoading: loading,
@@ -86,9 +80,6 @@ export const useLanguageDetailsQuery = (languageCode) => {
     fetchPolicy: 'cache-first',
     variables: { code: languageCode }
   });
-  if (error) {
-    console.error(error);
-  }
   return {
     language: data?.language,
     languageLoading: loading,

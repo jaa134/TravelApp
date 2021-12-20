@@ -13,9 +13,6 @@ export const useListContinentsQuery = () => {
   const { data, loading, error } = useQuery(LIST_CONTINENTS, {
     fetchPolicy: 'cache-first'
   });
-  if (error) {
-    console.error(error);
-  }
   return {
     continents: data?.continents,
     continentsLoading: loading,
@@ -37,9 +34,6 @@ export const useListCountriesQuery = () => {
   const { data, loading, error } = useQuery(LIST_COUNTRIES, {
     fetchPolicy: 'cache-first'
   });
-  if (error) {
-    console.error(error);
-  }
   return {
     countries: data?.countries,
     countriesLoading: loading,
@@ -60,9 +54,6 @@ export const useListLanguagesQuery = () => {
   const { data, loading, error } = useQuery(LIST_LANGUAGES, {
     fetchPolicy: 'cache-first'
   });
-  if (error) {
-    console.error(error);
-  }
   return {
     languages: data?.languages,
     languagesLoading: loading,
