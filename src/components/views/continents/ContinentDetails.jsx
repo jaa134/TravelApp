@@ -43,7 +43,7 @@ const ContinentDetails = () => {
               <ul>
                 {continent.countries.map((country) => (
                   <li key={country.code}>
-                    <CountryLink code={country.code} name={country.name} />
+                    <CountryLink code={country.code} text={country.name} />
                   </li>
                 ))}
               </ul>

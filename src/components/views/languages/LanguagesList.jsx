@@ -28,7 +28,7 @@ const LanguagesList = () => {
               </td>
               <td>{language.code}</td>
               <td>
-                <LanguageLink code={language.code} name={language.name} />
+                <LanguageLink code={language.code} text={language.name} />
               </td>
             </tr>
           ))}

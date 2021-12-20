@@ -46,7 +46,7 @@ const CountryDetails = () => {
             <dd>{country.phone}</dd>
             <dt>Continent</dt>
             <dd>
-              <ContinentLink code={country.continent.code} name={country.continent.name} />
+              <ContinentLink code={country.continent.code} text={country.continent.name} />
             </dd>
             <dt>Capital</dt>
             <dd>{country.capital}</dd>
@@ -67,7 +67,7 @@ const CountryDetails = () => {
               <ul>
                 {country.languages.map((language) => (
                   <li key={language.code}>
-                    <LanguageLink code={language.code} name={language.name} />
+                    <LanguageLink code={language.code} text={language.name} />
                   </li>
                 ))}
               </ul>

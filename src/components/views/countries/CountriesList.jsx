@@ -1,11 +1,11 @@
 import React from 'react';
+import Grid from '@mui/material/Grid';
 import Skeleton from '@mui/material/Skeleton';
 import Typography from '@mui/material/Typography';
 import { useListCountriesQuery } from '../../../api/lists';
 import defineBlock from '../../../utils/defineBlock';
 import NetworkErrorAlert from '../../common/NetworkErrorAlert';
-import { CountryLink } from '../../common/Links';
-import FavoriteButton from '../../utilities/favorites/FavoriteButton';
+import CountryCard from './CountryCard';
 import './CountriesList.scss';
 
 const bem = defineBlock('CountriesList');
@@ -19,27 +19,31 @@ const CountriesList = () => {
     content = <NetworkErrorAlert />;
   } else {
     content = (
-      <table className={bem('table')}>
-        <tbody>
-          {countries.map((country) => (
-            <tr key={country.code}>
-              <td>
-                <FavoriteButton code={country.code} type={country.__typename} />
-              </td>
-              <td className={bem('emoji')}>{country.emoji}</td>
-              <td>{country.code}</td>
-              <td>
-                <CountryLink code={country.code} name={country.name} />
-              </td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <Grid container spacing={2}>
+        {countries.map((country) => (
+          <Grid
+            key={country.code}
+            item
+            xs={12}
+            sm={12}
+            md={6}
+            lg={4}
+            xl={4}
+          >
+            <CountryCard
+              code={country.code}
+              name={country.name}
+              emoji={country.emoji}
+              type={country.__typename}
+            />
+          </Grid>
+        ))}
+      </Grid>
     );
   }
   return (
     <div className={bem()}>
-      <Typography variant="h5" gutterBottom>Countries</Typography>
+      <Typography variant="h4" gutterBottom>Countries</Typography>
       {content}
     </div>
   );

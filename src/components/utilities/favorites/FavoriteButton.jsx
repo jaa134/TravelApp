@@ -4,6 +4,10 @@ import IconButton from '@mui/material/IconButton';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import { useFavorites } from './FavoritesProvider';
+import defineBlock from '../../../utils/defineBlock';
+import './FavoriteButton.scss';
+
+const bem = defineBlock('FavoriteButton');
 
 const FavoriteButton = ({
   code,
@@ -13,6 +17,7 @@ const FavoriteButton = ({
   return isFavorite(code, type)
     ? (
       <IconButton
+        className={bem('', { active: true })}
         aria-label="unfavorite this item"
         onClick={() => { removeFavorite(code, type); }}
         edge="start"
@@ -23,6 +28,7 @@ const FavoriteButton = ({
     )
     : (
       <IconButton
+        className={bem('', { active: false })}
         aria-label="favorite this item"
         onClick={() => { addFavorite(code, type); }}
         edge="start"

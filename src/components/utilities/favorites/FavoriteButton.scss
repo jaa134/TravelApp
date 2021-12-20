@@ -1,0 +1,10 @@
+.FavoriteButton {
+  svg {
+    fill: #aaaaaa !important;
+  }
+  &--active {
+    svg {
+      fill: #cd3b3e !important;
+    }
+  }
+}

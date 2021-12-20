@@ -28,7 +28,7 @@ const ContinentsList = () => {
               </td>
               <td>{continent.code}</td>
               <td>
-                <ContinentLink code={continent.code} name={continent.name} />
+                <ContinentLink code={continent.code} text={continent.name} />
               </td>
             </tr>
           ))}
