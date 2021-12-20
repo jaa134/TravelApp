@@ -46,6 +46,7 @@ Procedure
 30. Cleanup pages for detail views
 31. Incorporate cesium into the home page
 32. Create a shared component for testing purposes. This component mocks GraphQL requests and handles favorites manipulation
+33. Cleaned up Apollo error handling by moving logging logic to client's link chain 
 
 ### TODO
 - Support filtering for list views using client side filtering. Keep client side filtering in local state? 
