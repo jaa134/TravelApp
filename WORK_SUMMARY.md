@@ -35,11 +35,12 @@ Procedure
 19. Develop a reusable component for common links
 20. Create a simple home page and links for navigation
 21. Develop a reuseable component for main app navigation lists
+22. Create the base page for favorites
 
 ### TODO
-- Create a home page that explains the website.
 - Flush out the design for list and detail views. Use a reusable component for layouts
 - Add functionality for favorites pages using local storage as we dont have backend setup for account management
+- allow favoriting from list and details pages
 - Support filtering for list views using graphql input
 - Add pagination if the api supported it
 - Add error handling for detail views when url uses a code that does not exists in the api

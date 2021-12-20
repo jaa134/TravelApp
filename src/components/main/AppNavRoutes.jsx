@@ -8,6 +8,7 @@ import CountryDetails from '../views/countries/CountryDetails';
 import LanguagesList from '../views/languages/LanguagesList';
 import LanguageDetails from '../views/languages/LanguageDetails';
 import RandomPage from '../utilities/random/RandomPage';
+import Favorites from '../utilities/favorites/Favorites';
 import GraphqlIDE from '../utilities/graphiql/GraphqlIDE';
 import Home from './Home';
 
@@ -17,7 +18,7 @@ const AppNavRoutes = () => (
     <Route path={paths.CONTINENTS} element={<ContinentsList />} exact />
     <Route path={paths.COUNTRIES} element={<CountriesList />} exact />
     <Route path={paths.LANGUAGES} element={<LanguagesList />} exact />
-    <Route path={paths.FAVORITES} element={<div />} exact />
+    <Route path={paths.FAVORITES} element={<Favorites />} exact />
     <Route path={paths.RANDOM} element={<RandomPage />} exact />
     <Route path={paths.GRAPHIQL} element={<GraphqlIDE />} exact />
     <Route path={`${paths.CONTINENT}/:id`} element={<ContinentDetails />} exact />
