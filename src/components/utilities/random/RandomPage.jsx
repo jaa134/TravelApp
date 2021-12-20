@@ -9,7 +9,7 @@ import './RandomPage.scss';
 const bem = defineBlock('RandomPage');
 
 // Wait 3 seconds before navigation
-const timeUntilNav = 30000;
+const timeUntilNav = 3000;
 
 const RandomPage = () => {
   const pages = [
