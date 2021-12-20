@@ -1,11 +1,10 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import Alert from '@mui/material/Alert';
-import AlertTitle from '@mui/material/AlertTitle';
 import Skeleton from '@mui/material/Skeleton';
 import Typography from '@mui/material/Typography';
 import { useLanguageDetailsQuery } from '../../../api/details';
 import defineBlock from '../../../utils/defineBlock';
+import NetworkErrorAlert from '../../common/NetworkErrorAlert';
 import './LanguageDetails.scss';
 
 const bem = defineBlock('LanguageDetails');
@@ -17,12 +16,7 @@ const LanguageDetails = () => {
   if (languageLoading) {
     content = <Skeleton variant="rectangular" height={200} />;
   } else if (languageError) {
-    content = (
-      <Alert severity="error">
-        <AlertTitle>Oops, something went wrong!</AlertTitle>
-        Please contact the support team if this problem persists
-      </Alert>
-    );
+    content = <NetworkErrorAlert />;
   } else {
     content = (
       <div className={bem('details')}>

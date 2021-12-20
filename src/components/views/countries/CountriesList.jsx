@@ -1,12 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import Alert from '@mui/material/Alert';
-import AlertTitle from '@mui/material/AlertTitle';
 import Skeleton from '@mui/material/Skeleton';
 import Typography from '@mui/material/Typography';
 import { paths } from '../../../constants';
 import { useListCountriesQuery } from '../../../api/lists';
 import defineBlock from '../../../utils/defineBlock';
+import NetworkErrorAlert from '../../common/NetworkErrorAlert';
 import './CountriesList.scss';
 
 const bem = defineBlock('CountriesList');
@@ -17,12 +16,7 @@ const CountriesList = () => {
   if (countriesLoading) {
     content = <Skeleton variant="rectangular" height={200} />;
   } else if (countriesError) {
-    content = (
-      <Alert severity="error">
-        <AlertTitle>Oops, something went wrong!</AlertTitle>
-        Please contact the support team if this problem persists
-      </Alert>
-    );
+    content = <NetworkErrorAlert />;
   } else {
     content = (
       <table className={bem('table')}>

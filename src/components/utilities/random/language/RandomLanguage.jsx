@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Navigate } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import Alert from '@mui/material/Alert';
-import AlertTitle from '@mui/material/AlertTitle';
 import Box from '@mui/material/Box';
 import CircularProgress from '@mui/material/CircularProgress';
 import Typography from '@mui/material/Typography';
 import { paths } from '../../../../constants';
 import { useListLanguagesQuery } from '../../../../api/lists';
 import defineBlock from '../../../../utils/defineBlock';
+import NetworkErrorAlert from '../../../common/NetworkErrorAlert';
 import './RandomLanguage.scss';
 
 const bem = defineBlock('RandomLanguage');
@@ -42,12 +41,7 @@ const RandomLanguage = ({
       </Box>
     );
   } else if (languagesError) {
-    content = (
-      <Alert severity="error">
-        <AlertTitle>Oops, something went wrong!</AlertTitle>
-        Please contact the support team if this problem persists
-      </Alert>
-    );
+    content = <NetworkErrorAlert />;
   } else if (shouldNavigate) {
     content = (
       <Navigate to={`/${paths.LANGUAGE}/${language.code}`} />
