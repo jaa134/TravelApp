@@ -10,12 +10,24 @@ import Toolbar from '@mui/material/Toolbar';
 import Tooltip from '@mui/material/Tooltip';
 import logoSrc from '../../assets/images/map.svg';
 import defineBlock from '../../utils/defineBlock';
+import { useFavorites } from '../utilities/favorites/FavoritesProvider';
 import './AppToolbar.scss';
 
 export const bem = defineBlock('AppToolbar');
 
 const AppToolbar = () => {
   const [anchorElUser, setAnchorElUser] = useState(null);
+  const openMenu = (event) => {
+    setAnchorElUser(event.currentTarget);
+  };
+  const closeMenu = () => {
+    setAnchorElUser(null);
+  };
+  const { clearFavorites } = useFavorites();
+  const clearUserData = () => {
+    clearFavorites();
+    closeMenu();
+  };
   return (
     <AppBar
       className={bem()}
@@ -38,7 +50,7 @@ const AppToolbar = () => {
         </Typography>
         <Box sx={{ flexGrow: 1 }} />
         <Tooltip title="Open user menu">
-          <IconButton onClick={(event) => { setAnchorElUser(event.currentTarget); }}>
+          <IconButton onClick={openMenu}>
             <Avatar />
           </IconButton>
         </Tooltip>
@@ -56,9 +68,9 @@ const AppToolbar = () => {
             horizontal: 'right'
           }}
           open={Boolean(anchorElUser)}
-          onClose={() => { setAnchorElUser(null); }}
+          onClose={closeMenu}
         >
-          <MenuItem>
+          <MenuItem onClick={clearUserData}>
             <Typography textAlign="center">Reset user data</Typography>
           </MenuItem>
         </Menu>

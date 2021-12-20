@@ -50,7 +50,14 @@ const useFavoritesStorage = () => {
     });
   };
 
-  return { isFavorite, addFavorite, removeFavorite };
+  const clearFavorites = () => {
+    setFavorites({});
+    setFavoritesInLocalStorage({});
+  };
+
+  return {
+    isFavorite, addFavorite, removeFavorite, clearFavorites
+  };
 };
 
 const FavoritesContext = createContext();
