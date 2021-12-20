@@ -5,6 +5,7 @@ import { useListContinentsQuery } from '../../../api/lists';
 import defineBlock from '../../../utils/defineBlock';
 import NetworkErrorAlert from '../../common/NetworkErrorAlert';
 import { ContinentLink } from '../../common/Links';
+import FavoriteButton from '../../utilities/favorites/FavoriteButton';
 import './ContinentsList.scss';
 
 const bem = defineBlock('ContinentsList');
@@ -22,6 +23,9 @@ const ContinentsList = () => {
         <tbody>
           {continents.map((continent) => (
             <tr key={continent.code}>
+              <td>
+                <FavoriteButton code={continent.code} type={continent.__typename} />
+              </td>
               <td>{continent.code}</td>
               <td>
                 <ContinentLink code={continent.code} name={continent.name} />

@@ -7,6 +7,7 @@ import defineBlock from '../../../utils/defineBlock';
 import NetworkErrorAlert from '../../common/NetworkErrorAlert';
 import NotFoundAlert from '../../common/NotFoundAlert';
 import { ContinentLink, LanguageLink } from '../../common/Links';
+import FavoriteButton from '../../utilities/favorites/FavoriteButton';
 import './CountryDetails.scss';
 
 const bem = defineBlock('CountryDetails');
@@ -31,6 +32,10 @@ const CountryDetails = () => {
         </Typography>
         <Typography variant="body1" gutterBottom component="div">
           <dl>
+            <dt>Favorite</dt>
+            <dd>
+              <FavoriteButton code={country.code} type={country.__typename} />
+            </dd>
             <dt>Code</dt>
             <dd>{country.code}</dd>
             <dt>Flag</dt>

@@ -37,11 +37,10 @@ Procedure
 21. Develop a reuseable component for main app navigation lists
 22. Create the base page for favorites
 23. Handle cases where codes might not exist for detail views
+24. Allow favoriting items from lists and detail views
 
 ### TODO
 - Flush out the design for list and detail views. Use a reusable component for layouts
-- Add functionality for favorites pages using local storage as we dont have backend setup for account management
-- allow favoriting from list and details pages
 - Support filtering for list views using graphql query input filters
 - Add more tests
 - consider using Parcel in the future for quicker project configuration

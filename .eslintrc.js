@@ -24,6 +24,7 @@ module.exports = {
     'comma-dangle': ['error', 'never'],
     'no-console': ['error', { 'allow': ['error'] }],
     'no-plusplus': 'off',
+    'no-underscore-dangle': 'off',
     'import/prefer-default-export': 'off',
     'react/jsx-props-no-spreading': 'off',
     'react/function-component-definition': ['error', {

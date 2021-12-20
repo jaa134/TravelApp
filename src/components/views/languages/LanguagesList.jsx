@@ -5,6 +5,7 @@ import { useListLanguagesQuery } from '../../../api/lists';
 import defineBlock from '../../../utils/defineBlock';
 import NetworkErrorAlert from '../../common/NetworkErrorAlert';
 import { LanguageLink } from '../../common/Links';
+import FavoriteButton from '../../utilities/favorites/FavoriteButton';
 import './LanguagesList.scss';
 
 const bem = defineBlock('LanguagesList');
@@ -22,6 +23,9 @@ const LanguagesList = () => {
         <tbody>
           {languages.map((language) => (
             <tr key={language.code}>
+              <td>
+                <FavoriteButton code={language.code} type={language.__typename} />
+              </td>
               <td>{language.code}</td>
               <td>
                 <LanguageLink code={language.code} name={language.name} />

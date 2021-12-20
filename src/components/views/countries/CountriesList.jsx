@@ -5,6 +5,7 @@ import { useListCountriesQuery } from '../../../api/lists';
 import defineBlock from '../../../utils/defineBlock';
 import NetworkErrorAlert from '../../common/NetworkErrorAlert';
 import { CountryLink } from '../../common/Links';
+import FavoriteButton from '../../utilities/favorites/FavoriteButton';
 import './CountriesList.scss';
 
 const bem = defineBlock('CountriesList');
@@ -22,6 +23,9 @@ const CountriesList = () => {
         <tbody>
           {countries.map((country) => (
             <tr key={country.code}>
+              <td>
+                <FavoriteButton code={country.code} type={country.__typename} />
+              </td>
               <td className={bem('emoji')}>{country.emoji}</td>
               <td>{country.code}</td>
               <td>

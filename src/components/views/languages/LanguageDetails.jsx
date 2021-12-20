@@ -6,6 +6,7 @@ import { useLanguageDetailsQuery } from '../../../api/details';
 import defineBlock from '../../../utils/defineBlock';
 import NetworkErrorAlert from '../../common/NetworkErrorAlert';
 import NotFoundAlert from '../../common/NotFoundAlert';
+import FavoriteButton from '../../utilities/favorites/FavoriteButton';
 import './LanguageDetails.scss';
 
 const bem = defineBlock('LanguageDetails');
@@ -30,6 +31,10 @@ const LanguageDetails = () => {
         </Typography>
         <Typography variant="body1" gutterBottom component="div">
           <dl>
+            <dt>Favorite</dt>
+            <dd>
+              <FavoriteButton code={language.code} type={language.__typename} />
+            </dd>
             <dt>Code</dt>
             <dd>{language.code}</dd>
             <dt>Native</dt>
