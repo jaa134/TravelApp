@@ -22,7 +22,7 @@ export const useContinentDetailsQuery = (continentCode) => {
     console.error(error);
   }
   return {
-    continent: data?.continent || [],
+    continent: data?.continent,
     continentLoading: loading,
     continentError: error
   };
@@ -63,7 +63,7 @@ export const useCountryDetailsQuery = (countryCode) => {
     console.error(error);
   }
   return {
-    country: data?.country || [],
+    country: data?.country,
     countryLoading: loading,
     countryError: error
   };
@@ -89,7 +89,7 @@ export const useLanguageDetailsQuery = (languageCode) => {
     console.error(error);
   }
   return {
-    language: data?.language || [],
+    language: data?.language,
     languageLoading: loading,
     languageError: error
   };

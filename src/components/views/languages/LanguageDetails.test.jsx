@@ -3,6 +3,8 @@ describe('LanguageDetails', () => {
 
   test.todo('Error component is displayed while query is in error state');
 
+  test.todo('Error component is displayed when url param results in no data');
+
   test.todo('Language details render after query returns data');
 
   test.todo('Can favorite a language and the data is saved to local storage');

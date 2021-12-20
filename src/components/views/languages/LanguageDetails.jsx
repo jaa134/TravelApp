@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import { useLanguageDetailsQuery } from '../../../api/details';
 import defineBlock from '../../../utils/defineBlock';
 import NetworkErrorAlert from '../../common/NetworkErrorAlert';
+import NotFoundAlert from '../../common/NotFoundAlert';
 import './LanguageDetails.scss';
 
 const bem = defineBlock('LanguageDetails');
@@ -17,6 +18,8 @@ const LanguageDetails = () => {
     content = <Skeleton variant="rectangular" height={200} />;
   } else if (languageError) {
     content = <NetworkErrorAlert />;
+  } else if (!language) {
+    content = <NotFoundAlert />;
   } else {
     content = (
       <div className={bem('details')}>

@@ -5,6 +5,7 @@ import Typography from '@mui/material/Typography';
 import { useContinentDetailsQuery } from '../../../api/details';
 import defineBlock from '../../../utils/defineBlock';
 import NetworkErrorAlert from '../../common/NetworkErrorAlert';
+import NotFoundAlert from '../../common/NotFoundAlert';
 import { CountryLink } from '../../common/Links';
 import './ContinentDetails.scss';
 
@@ -18,6 +19,8 @@ const ContinentDetails = () => {
     content = <Skeleton variant="rectangular" height={200} />;
   } else if (continentError) {
     content = <NetworkErrorAlert />;
+  } else if (!continent) {
+    content = <NotFoundAlert />;
   } else {
     content = (
       <div className={bem('details')}>

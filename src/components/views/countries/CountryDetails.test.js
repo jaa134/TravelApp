@@ -3,6 +3,8 @@ describe('CountryDetails', () => {
 
   test.todo('Error component is displayed while query is in error state');
 
+  test.todo('Error component is displayed when url param results in no data');
+
   test.todo('Country details render after query returns data and inlcudes a link to the country\'s continent');
 
   test.todo('Country details render after query returns data and inlcudes a link to the country\'s languages');

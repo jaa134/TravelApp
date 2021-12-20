@@ -1,6 +1,6 @@
 describe('Favorites', () => {
   test.todo('Shows favorites for countries and gets data from local storage');
-  
+
   test.todo('Loading component is displayed while query is in loading state');
 
   test.todo('Error component is displayed while query is in error state');
