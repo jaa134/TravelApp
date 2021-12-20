@@ -71,8 +71,6 @@ const utilitiesNav = [
   }
 ];
 
-const userMenuItems = ['Profile', 'Account', 'Dashboard', 'Logout'];
-
 const App = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -127,11 +125,9 @@ const App = () => {
             open={Boolean(anchorElUser)}
             onClose={() => { setAnchorElUser(null); }}
           >
-            {userMenuItems.map((setting) => (
-              <MenuItem key={setting}>
-                <Typography textAlign="center">{setting}</Typography>
-              </MenuItem>
-            ))}
+            <MenuItem>
+              <Typography textAlign="center">Reset user data</Typography>
+            </MenuItem>
           </Menu>
         </Toolbar>
       </AppBar>
