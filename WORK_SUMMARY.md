@@ -46,12 +46,13 @@ Procedure
 30. Cleanup pages for detail views
 31. Incorporate cesium into the home page
 32. Create a shared component for testing purposes. This component mocks GraphQL requests and handles favorites manipulation
-33. Cleaned up Apollo error handling by moving logging logic to client's link chain 
+33. Cleaned up Apollo error handling by moving logging logic to client's link chain
+34. Refined test suite.
 
 ### TODO
 - Support filtering for list views using client side filtering. Keep client side filtering in local state? 
 - Consider adding client side pagination to the list views so rendering is quicker
 - Rearrange CSS import order so my CSS definitions are higher priority than Materil UI. Remove use of "!important"
-- Add more tests
-- Setup Gitlab CI pipeline for running tests
+- Update tests to make better use of bem functions for component names
+- Setup Gitlab CI pipeline for running tests and linting on push to master
 - consider using Parcel in the future for quicker project configuration
