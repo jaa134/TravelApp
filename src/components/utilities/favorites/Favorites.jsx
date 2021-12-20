@@ -4,6 +4,9 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import defineBlock from '../../../utils/defineBlock';
+import ContinentsList from '../../views/continents/ContinentsList';
+import CountriesList from '../../views/countries/CountriesList';
+import LanguagesList from '../../views/languages/LanguagesList';
 import FavoritesPanel from './FavoritesPanel';
 
 const bem = defineBlock('Favorites');
@@ -16,11 +19,11 @@ const Favorites = () => {
   return (
     <div className={bem()}>
       <Typography
-        variant="h5"
+        variant="h4"
         component="div"
         gutterBottom
       >
-        Your favorites
+        Favorites
       </Typography>
       <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Tabs value={selectedTab} onChange={handleTabChange}>
@@ -30,13 +33,13 @@ const Favorites = () => {
         </Tabs>
       </Box>
       <FavoritesPanel value={selectedTab} index={0}>
-        Continents
+        <ContinentsList favoritesOnly />
       </FavoritesPanel>
       <FavoritesPanel value={selectedTab} index={1}>
-        Countries
+        <CountriesList favoritesOnly />
       </FavoritesPanel>
       <FavoritesPanel value={selectedTab} index={2}>
-        Languages
+        <LanguagesList favoritesOnly />
       </FavoritesPanel>
     </div>
   );

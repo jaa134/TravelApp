@@ -40,7 +40,8 @@ Procedure
 24. Allow favoriting items from lists and detail views
 25. Update ui shell for eassier navigation
 26. Allow users to clear user data
-27. Update list view 
+27. Update design for list views
+28. Finish design and implementation of favorites views
 
 ### TODO
 - Flush out the design for home page.

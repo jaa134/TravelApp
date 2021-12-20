@@ -17,7 +17,7 @@ export const useListContinentsQuery = () => {
     console.error(error);
   }
   return {
-    continents: data?.continents || [],
+    continents: data?.continents,
     continentsLoading: loading,
     continentsError: error
   };
@@ -41,7 +41,7 @@ export const useListCountriesQuery = () => {
     console.error(error);
   }
   return {
-    countries: data?.countries || [],
+    countries: data?.countries,
     countriesLoading: loading,
     countriesError: error
   };
@@ -64,7 +64,7 @@ export const useListLanguagesQuery = () => {
     console.error(error);
   }
   return {
-    languages: data?.languages || [],
+    languages: data?.languages,
     languagesLoading: loading,
     languagesError: error
   };

@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
 import defineBlock from '../../../utils/defineBlock';
 
 const bem = defineBlock('FavoritesPanel');
@@ -12,8 +11,8 @@ const FavoritesPanel = ({
   children
 }) => (
   value === index && (
-    <Box className={bem()}>
-      <Typography>{children}</Typography>
+    <Box className={bem()} sx={{ p: 3 }}>
+      {children}
     </Box>
   )
 );
