@@ -1,4 +1,5 @@
 export const paths = {
+  HOME: '',
   CONTINENTS: 'continents',
   CONTINENT: 'continent',
   COUNTRIES: 'countries',

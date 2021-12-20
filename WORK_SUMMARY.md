@@ -33,6 +33,7 @@ Procedure
 17. Make initial detail views for continents, countries, and languages
 18. Develop a reusable component for graphql errors
 19. Develop a reusable component for common links
+20. Create a simple home page and links for navigation 
 
 ### TODO
 - Create a home page that explains the website.

@@ -23,22 +23,24 @@ import Toolbar from '@mui/material/Toolbar';
 import Tooltip from '@mui/material/Tooltip';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FlagIcon from '@mui/icons-material/Flag';
+import HomeIcon from '@mui/icons-material/Home';
 import MenuIcon from '@mui/icons-material/Menu';
 import PublicIcon from '@mui/icons-material/Public';
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 import TerminalIcon from '@mui/icons-material/Terminal';
 import TranslateIcon from '@mui/icons-material/Translate';
-import logoSrc from '../assets/images/map.svg';
-import { paths } from '../constants';
-import defineBlock from '../utils/defineBlock';
-import ContinentsList from './views/continents/ContinentsList';
-import ContinentDetails from './views/continents/ContinentDetails';
-import CountriesList from './views/countries/CountriesList';
-import CountryDetails from './views/countries/CountryDetails';
-import LanguagesList from './views/languages/LanguagesList';
-import LanguageDetails from './views/languages/LanguageDetails';
-import RandomPage from './utilities/random/RandomPage';
-import GraphqlIDE from './utilities/graphiql/GraphqlIDE';
+import logoSrc from '../../assets/images/map.svg';
+import { paths } from '../../constants';
+import defineBlock from '../../utils/defineBlock';
+import ContinentsList from '../views/continents/ContinentsList';
+import ContinentDetails from '../views/continents/ContinentDetails';
+import CountriesList from '../views/countries/CountriesList';
+import CountryDetails from '../views/countries/CountryDetails';
+import LanguagesList from '../views/languages/LanguagesList';
+import LanguageDetails from '../views/languages/LanguageDetails';
+import RandomPage from '../utilities/random/RandomPage';
+import GraphqlIDE from '../utilities/graphiql/GraphqlIDE';
+import Home from './Home';
 import './App.scss';
 
 export const bem = defineBlock('App');
@@ -152,6 +154,19 @@ const App = () => {
         <List
           className={bem('nav-list')}
           component="nav"
+          aria-labelledby={bem('home')}
+        >
+          <ListItem key="Home" button component={Link} to={paths.HOME}>
+            <ListItemIcon>
+              <HomeIcon />
+            </ListItemIcon>
+            <ListItemText primary="Home" />
+          </ListItem>
+        </List>
+        <Divider />
+        <List
+          className={bem('nav-list')}
+          component="nav"
           aria-labelledby={bem('views')}
           subheader={(
             <ListSubheader component="div" id={bem('views')}>
@@ -195,6 +210,7 @@ const App = () => {
         sx={{ flexGrow: 1 }}
       >
         <Routes>
+          <Route path={paths.HOME} element={<Home />} exact />
           <Route path={paths.CONTINENTS} element={<ContinentsList />} exact />
           <Route path={paths.COUNTRIES} element={<CountriesList />} exact />
           <Route path={paths.LANGUAGES} element={<LanguagesList />} exact />
@@ -204,7 +220,7 @@ const App = () => {
           <Route path={`${paths.CONTINENT}/:id`} element={<ContinentDetails />} exact />
           <Route path={`${paths.COUNTRY}/:id`} element={<CountryDetails />} exact />
           <Route path={`${paths.LANGUAGE}/:id`} element={<LanguageDetails />} exact />
-          <Route path="*" element={<Navigate replace to={paths.CONTINENTS} />} />
+          <Route path="*" element={<Navigate replace to={paths.HOME} />} />
         </Routes>
       </Box>
     </Box>
