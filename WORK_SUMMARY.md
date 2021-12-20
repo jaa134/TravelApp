@@ -38,6 +38,7 @@ Procedure
 22. Create the base page for favorites
 23. Handle cases where codes might not exist for detail views
 24. Allow favoriting items from lists and detail views
+25. Update ui shell for eassier navigation
 
 ### TODO
 - Flush out the design for list and detail views. Use a reusable component for layouts
