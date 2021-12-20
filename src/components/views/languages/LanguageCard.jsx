@@ -15,7 +15,7 @@ export const bem = defineBlock('LanguageCard');
 const LanguageCard = ({
   name, code, type, showType
 }) => (
-  <Card className={bem()} sx={{ maxWidth: 500 }}>
+  <Card className={bem()} variant="outlined" sx={{ maxWidth: 500 }}>
     <CardContent>
       <div className={bem('header')}>
         <Typography className={bem('name')} variant="h6" noWrap component="div">
