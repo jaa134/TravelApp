@@ -70,7 +70,9 @@ describe('LanguagesList', () => {
     const wrapper = getWrapper([emptyMock], false);
     validateLoading(wrapper);
     await updateWrapper(wrapper);
-    expect(getLanguagesList(wrapper).find('LanguageCard')).toHaveLength(0);
+    const languagesList = getLanguagesList(wrapper);
+    expect(languagesList.find('LanguageCard')).toHaveLength(0);
+    expect(languagesList.find('NoItemsAlert').exists()).toBe(true);
   });
 
   test('All language rows render after query returns data when favoritesOnly disabled', async () => {

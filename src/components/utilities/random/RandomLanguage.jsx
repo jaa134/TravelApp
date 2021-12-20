@@ -10,7 +10,7 @@ import RequestErrorAlert from '../../common/RequestErrorAlert';
 import LanguageCard from '../../views/languages/LanguageCard';
 import './RandomLanguage.scss';
 
-const bem = defineBlock('RandomLanguage');
+export const bem = defineBlock('RandomLanguage');
 
 const RandomLanguage = ({
   timeUntilNav

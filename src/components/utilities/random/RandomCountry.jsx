@@ -10,7 +10,7 @@ import RequestErrorAlert from '../../common/RequestErrorAlert';
 import CountryCard from '../../views/countries/CountryCard';
 import './RandomCountry.scss';
 
-const bem = defineBlock('RandomCountry');
+export const bem = defineBlock('RandomCountry');
 
 const RandomCountry = ({
   timeUntilNav

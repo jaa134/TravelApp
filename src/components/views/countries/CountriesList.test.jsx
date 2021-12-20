@@ -71,7 +71,9 @@ describe('CountriesList', () => {
     const wrapper = getWrapper([emptyMock], false);
     validateLoading(wrapper);
     await updateWrapper(wrapper);
-    expect(getCountriesList(wrapper).find('CountryCard')).toHaveLength(0);
+    const continentsList = getCountriesList(wrapper);
+    expect(continentsList.find('CountryCard')).toHaveLength(0);
+    expect(continentsList.find('NoItemsAlert').exists()).toBe(true);
   });
 
   test('All country rows render after query returns data when favoritesOnly disabled', async () => {

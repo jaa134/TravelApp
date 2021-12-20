@@ -10,7 +10,7 @@ import RequestErrorAlert from '../../common/RequestErrorAlert';
 import ContinentCard from '../../views/continents/ContinentCard';
 import './RandomContinent.scss';
 
-const bem = defineBlock('RandomContinent');
+export const bem = defineBlock('RandomContinent');
 
 const RandomContinent = ({
   timeUntilNav
