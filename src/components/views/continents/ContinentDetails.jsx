@@ -1,13 +1,15 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import Skeleton from '@mui/material/Skeleton';
+import Grid from '@mui/material/Grid';
+import CircularProgress from '@mui/material/CircularProgress';
 import Typography from '@mui/material/Typography';
 import { useContinentDetailsQuery } from '../../../api/details';
 import defineBlock from '../../../utils/defineBlock';
 import NetworkErrorAlert from '../../common/NetworkErrorAlert';
 import NotFoundAlert from '../../common/NotFoundAlert';
-import { CountryLink } from '../../common/Links';
+import LabeledDetail from '../../common/LabeledDetail';
 import FavoriteButton from '../../utilities/favorites/FavoriteButton';
+import CountryCard from '../countries/CountryCard';
 import './ContinentDetails.scss';
 
 const bem = defineBlock('ContinentDetails');
@@ -17,45 +19,49 @@ const ContinentDetails = () => {
   const { continent, continentLoading, continentError } = useContinentDetailsQuery(params.id);
   let content = null;
   if (continentLoading) {
-    content = <Skeleton variant="rectangular" height={200} />;
+    content = <CircularProgress />;
   } else if (continentError) {
     content = <NetworkErrorAlert />;
   } else if (!continent) {
     content = <NotFoundAlert />;
   } else {
+    const favoriteButton = <FavoriteButton code={continent.code} type={continent.__typename} />;
     content = (
       <div className={bem('details')}>
-        <Typography variant="subtitle1" gutterBottom component="div">
-          Welcome to
-          {' '}
+        <Typography className={bem('subheader')} variant="h5" gutterBottom>
           {continent.name}
         </Typography>
-        <Typography variant="body1" gutterBottom component="div">
-          <dl>
-            <dt>Favorite</dt>
-            <dd>
-              <FavoriteButton code={continent.code} type={continent.__typename} />
-            </dd>
-            <dt>Code</dt>
-            <dd>{continent.code}</dd>
-            <dt>Countries</dt>
-            <dd>
-              <ul>
-                {continent.countries.map((country) => (
-                  <li key={country.code}>
-                    <CountryLink code={country.code} text={country.name} />
-                  </li>
-                ))}
-              </ul>
-            </dd>
-          </dl>
+        <LabeledDetail label="Favorite" value={favoriteButton} />
+        <LabeledDetail label="Code" value={continent.code} />
+        <Typography className={bem('list-title')} variant="h6">
+          Countries
         </Typography>
+        <Grid container spacing={2}>
+          {continent.countries.map((country) => (
+            <Grid
+              key={country.code}
+              item
+              xs={12}
+              sm={12}
+              md={6}
+              lg={4}
+              xl={4}
+            >
+              <CountryCard
+                code={country.code}
+                name={country.name}
+                emoji={country.emoji}
+                type={country.__typename}
+              />
+            </Grid>
+          ))}
+        </Grid>
       </div>
     );
   }
   return (
     <div className={bem()}>
-      <Typography variant="h5" gutterBottom>Continent details</Typography>
+      <Typography variant="h4" gutterBottom>Continent details</Typography>
       {content}
     </div>
   );

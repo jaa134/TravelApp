@@ -1,11 +1,12 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import Skeleton from '@mui/material/Skeleton';
+import CircularProgress from '@mui/material/CircularProgress';
 import Typography from '@mui/material/Typography';
 import { useLanguageDetailsQuery } from '../../../api/details';
 import defineBlock from '../../../utils/defineBlock';
 import NetworkErrorAlert from '../../common/NetworkErrorAlert';
 import NotFoundAlert from '../../common/NotFoundAlert';
+import LabeledDetail from '../../common/LabeledDetail';
 import FavoriteButton from '../../utilities/favorites/FavoriteButton';
 import './LanguageDetails.scss';
 
@@ -16,39 +17,28 @@ const LanguageDetails = () => {
   const { language, languageLoading, languageError } = useLanguageDetailsQuery(params.id);
   let content = null;
   if (languageLoading) {
-    content = <Skeleton variant="rectangular" height={200} />;
+    content = <CircularProgress />;
   } else if (languageError) {
     content = <NetworkErrorAlert />;
   } else if (!language) {
     content = <NotFoundAlert />;
   } else {
+    const favoriteButton = <FavoriteButton code={language.code} type={language.__typename} />;
     content = (
       <div className={bem('details')}>
-        <Typography variant="subtitle1" gutterBottom component="div">
-          Introducing the language of
-          {' '}
+        <Typography className={bem('subheader')} variant="h5" gutterBottom>
           {language.name}
         </Typography>
-        <Typography variant="body1" gutterBottom component="div">
-          <dl>
-            <dt>Favorite</dt>
-            <dd>
-              <FavoriteButton code={language.code} type={language.__typename} />
-            </dd>
-            <dt>Code</dt>
-            <dd>{language.code}</dd>
-            <dt>Native</dt>
-            <dd>{language.native}</dd>
-            <dt>RTL</dt>
-            <dd>{language.rtl ? 'Yes' : 'No'}</dd>
-          </dl>
-        </Typography>
+        <LabeledDetail label="Favorite" value={favoriteButton} />
+        <LabeledDetail label="Code" value={language.code} />
+        <LabeledDetail label="Native" value={language.native} />
+        <LabeledDetail label="RTL" value={language.rtl ? 'Yes' : 'No'} />
       </div>
     );
   }
   return (
     <div className={bem()}>
-      <Typography variant="h5" gutterBottom>Language details</Typography>
+      <Typography variant="h4" gutterBottom>Language details</Typography>
       {content}
     </div>
   );

@@ -8,6 +8,7 @@ const DETAILS_CONTINENT = gql`
       countries {
         code
         name
+        emoji
       }
     }
   }

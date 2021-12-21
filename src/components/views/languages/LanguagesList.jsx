@@ -13,7 +13,7 @@ import LanguageCard from './LanguageCard';
 const bem = defineBlock('LanguagesList');
 
 const NUM_LOADING_MOCKS = 25;
-const CARD_HEIGHT = 178;
+const CARD_HEIGHT = 150;
 
 const LanguagesList = ({
   favoritesOnly

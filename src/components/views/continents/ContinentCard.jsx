@@ -4,10 +4,11 @@ import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
+import defineBlock from '../../../utils/defineBlock';
+import LabeledDetail from '../../common/LabeledDetail';
 import { ContinentLink } from '../../common/Links';
 import FavoriteButton from '../../utilities/favorites/FavoriteButton';
 import './ContinentCard.scss';
-import defineBlock from '../../../utils/defineBlock';
 
 const bem = defineBlock('ContinentCard');
 
@@ -23,16 +24,8 @@ const ContinentCard = ({
         <FavoriteButton code={code} type={type} />
       </div>
       <Typography className={bem('details')} variant="body1" noWrap component="div">
-        {showType && (
-          <div className={bem('detail')}>
-            <div className={bem('label')}>Type</div>
-            <div className={bem('value')}>{type}</div>
-          </div>
-        )}
-        <div className={bem('detail')}>
-          <div className={bem('label')}>Code</div>
-          <div className={bem('value')}>{code}</div>
-        </div>
+        {showType && <LabeledDetail label="Type" value={type} />}
+        <LabeledDetail label="Code" value={code} />
       </Typography>
     </CardContent>
     <CardActions>

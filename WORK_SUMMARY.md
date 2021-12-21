@@ -43,12 +43,13 @@ Procedure
 27. Update design for list views
 28. Finish design and implementation of favorites views
 29. Finish design and implementation of random page
+30. Cleanup pages for detail views
 
 ### TODO
 - Flush out the design for home page.
-- Flush out the design for detail views.
 - Support filtering for list views using client side filtering
 - Keep client side filtering in local state? 
+- Consider addig client side pagination to the details view so rendering is quicker
 - Rearrange CSS import order so my CSS definitions are higher priority than Materil UI
 - Add more tests
 - consider using Parcel in the future for quicker project configuration

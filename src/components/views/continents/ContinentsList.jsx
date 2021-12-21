@@ -13,7 +13,7 @@ import ContinentCard from './ContinentCard';
 const bem = defineBlock('ContinentsList');
 
 const NUM_LOADING_MOCKS = 7;
-const CARD_HEIGHT = 142;
+const CARD_HEIGHT = 150;
 
 const ContinentsList = ({
   favoritesOnly
