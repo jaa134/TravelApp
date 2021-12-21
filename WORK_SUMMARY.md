@@ -47,9 +47,8 @@ Procedure
 31. Incorporate cesium into the home page
 
 ### TODO
-- Show country lines on Cesium.
 - Support filtering for list views using client side filtering. Keep client side filtering in local state? 
-- Consider addig client side pagination to the list views so rendering is quicker
+- Consider adding client side pagination to the list views so rendering is quicker
 - Rearrange CSS import order so my CSS definitions are higher priority than Materil UI. Remove use of "!important"
 - Add more tests
 - consider using Parcel in the future for quicker project configuration

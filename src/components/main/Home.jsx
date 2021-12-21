@@ -1,7 +1,8 @@
 import React from 'react';
-import { Viewer } from 'resium';
+import { Viewer, GeoJsonDataSource } from 'resium';
 import Typography from '@mui/material/Typography';
 import defineBlock from '../../utils/defineBlock';
+import countryGeoJson from '../../assets/config/cesium.geojson';
 import './Home.scss';
 
 const bem = defineBlock('Home');
@@ -14,7 +15,9 @@ const Home = () => (
     <Typography className={bem('subheader')} variant="h5" component="div">
       The world&apos;s #1 travel planning tool
     </Typography>
-    <Viewer />
+    <Viewer>
+      <GeoJsonDataSource data={countryGeoJson} />
+    </Viewer>
   </div>
 );
 

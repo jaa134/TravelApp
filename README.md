@@ -8,7 +8,7 @@ While you explore, make sure to favorite the places you want to visit most. Mana
 Are you more of a free spirit? Do you not like being held back by concrete plans? Why not try something new and exciting? Use our randomness utility to navigate to a random page on our application. Explore more freely by not having the pressure of choosing your next vacation. Let us do it for you!
 
 ### GraphiQL 
-Are you more of a techinical user? Do you have a background with GraphQL development. Then maybe our GraphQL playground is just right for you. Get the data you need from our API with the customization you deserve! From the GraphiQL tab, you can use our API directly. We have enabled introspection so users can discover more details about the data we have to offer. Our API has no mutations and no sensitive data which means bad actors can't cause harm by exposing this information. Use this feature as you wish!
+Are you more of a techinical user? Do you have a background with GraphQL development? Then maybe our GraphQL playground is just right for you! Get the data you need from our API with the customization you deserve. From the GraphiQL tab, you can use our API directly. We have enabled introspection so users can discover more details about the data we have to offer. Our API has no mutations and no sensitive data which means bad actors can't cause harm by exposing this information. Use this feature as you wish!
 
 ## Technologies
 - Webpack

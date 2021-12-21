@@ -74,6 +74,10 @@ module.exports = {
         ],
       },
       {
+        test: /\.geojson$/,
+        loader: 'json-loader'
+      },
+      {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: 'asset/resource',
       },  
