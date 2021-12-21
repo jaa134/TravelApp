@@ -12,7 +12,7 @@ import CountryCard from './CountryCard';
 
 const bem = defineBlock('CountriesList');
 
-const NUM_LOADING_MOCKS = 7;
+const NUM_LOADING_MOCKS = 25;
 const CARD_HEIGHT = 142;
 
 const CountriesList = ({
