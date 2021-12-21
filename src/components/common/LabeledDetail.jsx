@@ -4,7 +4,7 @@ import Typography from '@mui/material/Typography';
 import defineBlock from '../../utils/defineBlock';
 import './LabeledDetail.scss';
 
-const bem = defineBlock('LabeledDetail');
+export const bem = defineBlock('LabeledDetail');
 
 const LabeledDetail = ({
   label, value

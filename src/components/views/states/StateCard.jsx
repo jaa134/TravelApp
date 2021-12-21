@@ -7,7 +7,7 @@ import defineBlock from '../../../utils/defineBlock';
 import LabeledDetail from '../../common/LabeledDetail';
 import './StateCard.scss';
 
-const bem = defineBlock('StateCard');
+export const bem = defineBlock('StateCard');
 
 const StateCard = ({
   name, code, type, showType
