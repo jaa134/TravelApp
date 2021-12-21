@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { MockedProvider } from '@apollo/client/testing';
+import { HashRouter } from 'react-router-dom';
 import FavoritesProvider from '../components/utilities/favorites/FavoritesProvider';
 
 /**
@@ -17,7 +18,9 @@ const TestWrapper = ({
     addTypename={addTypename}
   >
     <FavoritesProvider>
-      {children}
+      <HashRouter>
+        {children}
+      </HashRouter>
     </FavoritesProvider>
   </MockedProvider>
 );

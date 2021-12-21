@@ -10,7 +10,7 @@ import { CountryLink } from '../../common/Links';
 import FavoriteButton from '../../utilities/favorites/FavoriteButton';
 import './CountryCard.scss';
 
-const bem = defineBlock('CountryCard');
+export const bem = defineBlock('CountryCard');
 
 const CountryCard = ({
   name, code, emoji, type, showType

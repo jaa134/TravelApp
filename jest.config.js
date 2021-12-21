@@ -1,5 +1,5 @@
 module.exports = {
-  setupFilesAfterEnv: ["<rootDir>/test-setup.js"],
+  setupFilesAfterEnv: ["<rootDir>/setupTests.js"],
   transform: {
     "^.+\\.svg$": "svg-jest",
     "\\.jsx?$": "babel-jest"

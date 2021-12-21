@@ -10,7 +10,7 @@ import { ContinentLink } from '../../common/Links';
 import FavoriteButton from '../../utilities/favorites/FavoriteButton';
 import './ContinentCard.scss';
 
-const bem = defineBlock('ContinentCard');
+export const bem = defineBlock('ContinentCard');
 
 const ContinentCard = ({
   name, code, type, showType

@@ -7,7 +7,7 @@ import { useFavorites } from './FavoritesProvider';
 import defineBlock from '../../../utils/defineBlock';
 import './FavoriteButton.scss';
 
-const bem = defineBlock('FavoriteButton');
+export const bem = defineBlock('FavoriteButton');
 
 const FavoriteButton = ({
   code,

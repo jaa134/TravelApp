@@ -10,7 +10,7 @@ import { LanguageLink } from '../../common/Links';
 import FavoriteButton from '../../utilities/favorites/FavoriteButton';
 import './LanguageCard.scss';
 
-const bem = defineBlock('LanguageCard');
+export const bem = defineBlock('LanguageCard');
 
 const LanguageCard = ({
   name, code, type, showType
