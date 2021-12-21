@@ -48,9 +48,9 @@ Procedure
 32. Create a shared component for testing purposes. This component mocks GraphQL requests and handles favorites manipulation
 33. Cleaned up Apollo error handling by moving logging logic to client's link chain
 34. Refined test suite.
+35. Add filtering to list views.
 
 ### TODO
-- Support filtering for list views using client side filtering. Keep client side filtering in local state? 
 - Consider adding client side pagination to the list views so rendering is quicker
 - Rearrange CSS import order so my CSS definitions are higher priority than Materil UI. Remove use of "!important"
 - Update tests to make better use of bem functions for component names
