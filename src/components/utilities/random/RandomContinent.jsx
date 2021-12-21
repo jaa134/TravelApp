@@ -52,6 +52,7 @@ const RandomContinent = ({
         code={continent.code}
         name={continent.name}
         type={continent.__typename}
+        showType
       />
     );
   }

@@ -52,6 +52,7 @@ const RandomLanguage = ({
         code={language.code}
         name={language.name}
         type={language.__typename}
+        showType
       />
     );
   }

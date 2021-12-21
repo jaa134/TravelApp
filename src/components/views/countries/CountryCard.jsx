@@ -12,7 +12,7 @@ import defineBlock from '../../../utils/defineBlock';
 const bem = defineBlock('CountryCard');
 
 const CountryCard = ({
-  name, code, emoji, type
+  name, code, emoji, type, showType
 }) => (
   <Card className={bem()} sx={{ maxWidth: 500 }}>
     <CardContent>
@@ -23,6 +23,12 @@ const CountryCard = ({
         <FavoriteButton code={code} type={type} />
       </div>
       <Typography className={bem('details')} variant="body1" noWrap component="div">
+        {showType && (
+          <div className={bem('detail')}>
+            <div className={bem('label')}>Type</div>
+            <div className={bem('value')}>{type}</div>
+          </div>
+        )}
         <div className={bem('detail')}>
           <div className={bem('label')}>Emoji</div>
           <div className={bem(['value', 'emoji'])}>{emoji}</div>
@@ -43,7 +49,12 @@ CountryCard.propTypes = {
   name: PropTypes.string.isRequired,
   code: PropTypes.string.isRequired,
   emoji: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired
+  type: PropTypes.string.isRequired,
+  showType: PropTypes.bool
+};
+
+CountryCard.defaultProps = {
+  showType: false
 };
 
 export default CountryCard;

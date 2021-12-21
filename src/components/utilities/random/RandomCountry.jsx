@@ -53,6 +53,7 @@ const RandomCountry = ({
         name={country.name}
         emoji={country.emoji}
         type={country.__typename}
+        showType
       />
     );
   }
