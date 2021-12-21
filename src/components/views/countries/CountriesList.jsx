@@ -1,11 +1,8 @@
 import React, { useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import Autocomplete from '@mui/material/Autocomplete';
-import Box from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import Pagination from '@mui/material/Pagination';
 import Skeleton from '@mui/material/Skeleton';
-import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import { useListCountriesQuery } from '../../../api/lists';
 import defineBlock from '../../../utils/defineBlock';
@@ -26,8 +23,6 @@ const CountriesList = ({
   const { countries, countriesLoading, countriesError } = useListCountriesQuery();
   const { favorites, isFavorite } = useFavorites();
   const [selectedCountries, setSelectedCountries] = useState([]);
-  const [page, setPage] = useState(1);
-  const [pageSize, setPageSize] = useState(10);
 
   const normalizedCountries = useMemo(
     () => (countries || [])
@@ -55,14 +50,6 @@ const CountriesList = ({
     return values;
   }, [normalizedCountries, favorites, selectedCountries]);
 
-  const displayedCountries = useMemo(() => {
-    const start = (page - 1) * pageSize;
-    const end = page * pageSize;
-    return filteredCountries.slice(start, end);
-  }, [filteredCountries, page, pageSize]);
-
-  const pageCount = Math.ceil(filteredCountries.length / pageSize);
-
   let content = null;
   if (countriesError) {
     content = <RequestErrorAlert />;
@@ -85,7 +72,7 @@ const CountriesList = ({
         ...country,
         firstLetter: country.normalName[0].toUpperCase()
       }));
-      gridItems = displayedCountries.map((country) => ({
+      gridItems = filteredCountries.map((country) => ({
         key: country.code,
         component: (
           <CountryCard
@@ -103,34 +90,21 @@ const CountriesList = ({
       gridContent = <NoItemsAlert />;
     } else {
       gridContent = (
-        <Stack spacing={2}>
-          <Grid container spacing={2}>
-            {gridItems.map((item) => (
-              <Grid
-                key={item.key}
-                item
-                xs={12}
-                sm={12}
-                md={6}
-                lg={4}
-                xl={4}
-              >
-                {item.component}
-              </Grid>
-            ))}
-          </Grid>
-          {pageCount > 1 && (
-            <Box sx={{ alignSelf: 'flex-end' }}>
-              <Pagination
-                count={pageCount}
-                shape="rounded"
-                size="large"
-                page={page}
-                onChange={(_, value) => { setPage(value); }}
-              />
-            </Box>
-          )}
-        </Stack>
+        <Grid container spacing={2}>
+          {gridItems.map((item) => (
+            <Grid
+              key={item.key}
+              item
+              xs={12}
+              sm={12}
+              md={6}
+              lg={4}
+              xl={4}
+            >
+              {item.component}
+            </Grid>
+          ))}
+        </Grid>
       );
     }
 
@@ -146,10 +120,7 @@ const CountriesList = ({
           isOptionEqualToValue={(option, value) => option.code === value.code}
           sx={{ marginBottom: 2 }}
           renderInput={(params) => <TextField {...params} label="Choose a country" />}
-          onChange={(_, value) => {
-            setPage(1);
-            setSelectedCountries(value);
-          }}
+          onChange={(_, value) => { setSelectedCountries(value); }}
         />
         {gridContent}
       </>
