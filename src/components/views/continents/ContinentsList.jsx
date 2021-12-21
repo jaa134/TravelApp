@@ -1,7 +1,9 @@
-import React, { useMemo } from 'react';
+import React, { useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
+import Autocomplete from '@mui/material/Autocomplete';
 import Grid from '@mui/material/Grid';
 import Skeleton from '@mui/material/Skeleton';
+import TextField from '@mui/material/TextField';
 import { useListContinentsQuery } from '../../../api/lists';
 import defineBlock from '../../../utils/defineBlock';
 import PageTitle from '../../common/PageTitle';
@@ -12,31 +14,50 @@ import ContinentCard from './ContinentCard';
 
 export const bem = defineBlock('ContinentsList');
 
-export const NUM_LOADING_MOCKS = 7;
-const CARD_HEIGHT = 150;
+export const NUM_LOADING_MOCKS = 15;
+const CARD_HEIGHT = 182;
 
 const ContinentsList = ({
   favoritesOnly
 }) => {
   const { continents, continentsLoading, continentsError } = useListContinentsQuery();
   const { favorites, isFavorite } = useFavorites();
+  const [selectedContinents, setSelectedContinents] = useState([]);
+
+  const normalizedContinents = useMemo(
+    () => (continents || [])
+      .map((continent) => ({
+        ...continent,
+        normalName: continent.name.normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+      }))
+      .sort((a, b) => a.normalName.localeCompare(b.normalName)),
+    [continents]
+  );
+
   const filteredContinents = useMemo(() => {
-    let values = continents;
-    if (continents) {
-      if (favoritesOnly) {
-        values = values
-          .filter(({ code, __typename }) => isFavorite(code, __typename));
-      }
+    let values = normalizedContinents || [];
+    if (favoritesOnly) {
+      values = values
+        .filter(({ code, __typename }) => isFavorite(code, __typename));
+    }
+    if (selectedContinents.length) {
+      const selectedContinentsMap = selectedContinents.reduce((acc, cur) => {
+        acc[cur.code] = cur;
+        return acc;
+      }, {});
+      values = values.filter(({ code }) => code in selectedContinentsMap);
     }
     return values;
-  }, [continents, favorites]);
+  }, [normalizedContinents, favorites, selectedContinents]);
 
   let content = null;
   if (continentsError) {
     content = <RequestErrorAlert />;
   } else {
+    let options = null;
     let gridItems = null;
     if (continentsLoading) {
+      options = [];
       gridItems = [...Array(NUM_LOADING_MOCKS)].map((_, i) => ({
         key: i,
         component: (
@@ -47,6 +68,10 @@ const ContinentsList = ({
         )
       }));
     } else {
+      options = normalizedContinents.map((continent) => ({
+        ...continent,
+        firstLetter: continent.normalName[0].toUpperCase()
+      }));
       gridItems = filteredContinents.map((continent) => ({
         key: continent.code,
         component: (
@@ -59,10 +84,11 @@ const ContinentsList = ({
       }));
     }
 
+    let gridContent = null;
     if (gridItems.length === 0) {
-      content = <NoItemsAlert />;
+      gridContent = <NoItemsAlert />;
     } else {
-      content = (
+      gridContent = (
         <Grid container spacing={2}>
           {gridItems.map((item) => (
             <Grid
@@ -80,6 +106,24 @@ const ContinentsList = ({
         </Grid>
       );
     }
+
+    content = (
+      <>
+        <Autocomplete
+          id="search-continents"
+          multiple
+          value={selectedContinents}
+          options={options.sort((a, b) => a.normalName.localeCompare(b.normalName))}
+          groupBy={(option) => option.firstLetter}
+          getOptionLabel={(option) => option.name}
+          isOptionEqualToValue={(option, value) => option.code === value.code}
+          sx={{ marginBottom: 2 }}
+          renderInput={(params) => <TextField {...params} label="Choose a continent" />}
+          onChange={(_, value) => { setSelectedContinents(value); }}
+        />
+        {gridContent}
+      </>
+    );
   }
   return (
     <div className={bem()}>
