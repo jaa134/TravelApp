@@ -14,7 +14,7 @@ const bem = defineBlock('LanguageCard');
 const LanguageCard = ({
   name, code, type
 }) => (
-  <Card className={bem()}>
+  <Card className={bem()} sx={{ maxWidth: 500 }}>
     <CardContent>
       <div className={bem('header')}>
         <Typography className={bem('name')} variant="h6" noWrap component="div">
