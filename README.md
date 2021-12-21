@@ -18,6 +18,7 @@ Are you more of a techinical user? Do you have a background with GraphQL develop
 - Apollo Client
 - GraphQL
 - GraphiQL
+- Cesium
 - Sass
 - ESLint
 - Jest

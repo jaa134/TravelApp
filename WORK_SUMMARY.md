@@ -44,9 +44,10 @@ Procedure
 28. Finish design and implementation of favorites views
 29. Finish design and implementation of random page
 30. Cleanup pages for detail views
+31. Incorporate cesium into the home page
 
 ### TODO
-- Flush out the design for the home page.
+- Show country lines on Cesium.
 - Support filtering for list views using client side filtering. Keep client side filtering in local state? 
 - Consider addig client side pagination to the list views so rendering is quicker
 - Rearrange CSS import order so my CSS definitions are higher priority than Materil UI. Remove use of "!important"

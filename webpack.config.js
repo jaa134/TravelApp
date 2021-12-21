@@ -4,13 +4,41 @@
 // dev and production configs. Merge shared config with environment config.
 // See more: https://webpack.js.org/guides/production/
 
-const HtmlWebPackPlugin = require("html-webpack-plugin");
-const htmlPlugin = new HtmlWebPackPlugin({
+const webpack = require("webpack");
+const HtmlPlugin = require("html-webpack-plugin");
+const CopyPlugin = require("copy-webpack-plugin");
+const HtmlTagsPlugin = require("html-webpack-tags-plugin");
+
+/*
+  - Copy whole Cesium files at build time with copy-webpack-plugin
+  - Add tags to index.html to load JS and CSS with html-webpack-tags-plugin
+  - Notify Cesium to its path with webpack define plugin
+*/
+const definePlugin = new webpack.DefinePlugin({
+  CESIUM_BASE_URL: JSON.stringify("/cesium"),
+})
+const copyPlugin = new CopyPlugin({
+  patterns: [
+    {
+      from: "node_modules/cesium/Build/Cesium",
+      to: "cesium",
+    },
+  ],
+})
+const htmlTagsPlugin= new HtmlTagsPlugin({
+  append: false,
+  tags: ["cesium/Widgets/widgets.css", "cesium/Cesium.js"],
+})
+const htmlPlugin = new HtmlPlugin({
  template: "./src/index.html",
  filename: "./index.html",
  favicon: "./src/assets/images/favicon.ico"
 });
+
 module.exports = {
+  externals: {
+    cesium: "Cesium",
+  },
   mode: 'development',
   entry: './src/index.jsx',
   module: {
@@ -56,7 +84,7 @@ module.exports = {
       },
     ]
   },
-  plugins: [htmlPlugin],
+  plugins: [definePlugin, copyPlugin, htmlTagsPlugin, htmlPlugin],
   devServer: {
     host: '0.0.0.0'
   }
