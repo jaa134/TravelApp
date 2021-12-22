@@ -4,7 +4,7 @@ import TestWrapper from '../../../utils/TestWrapper';
 import updateWrapper from '../../../utils/updateWrapper';
 import { LIST_COUNTRIES } from '../../../api/lists';
 import { getItemmKey, FAVORITES_STORAGE_KEY } from '../../utilities/favorites/FavoritesProvider';
-import CountriesList, { bem, NUM_LOADING_MOCKS } from './CountriesList';
+import CountriesList, { bem, PAGE_SIZE } from './CountriesList';
 
 const getCountry = (i) => ({
   name: `name${i}`,
@@ -56,7 +56,7 @@ const validateLoading = (wrapper) => {
   // validate loading component is displayed while query is in loading state
   const countriesList = getCountriesList(wrapper);
   expect(countriesList.exists()).toBe(true);
-  expect(countriesList.find('MuiSkeletonRoot')).toHaveLength(NUM_LOADING_MOCKS);
+  expect(countriesList.find('MuiSkeletonRoot')).toHaveLength(PAGE_SIZE);
 };
 
 describe('CountriesList', () => {

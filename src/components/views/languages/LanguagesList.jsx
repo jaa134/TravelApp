@@ -1,9 +1,12 @@
 import React, { useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import Autocomplete from '@mui/material/Autocomplete';
+import Box from '@mui/material/Box';
+import CircularProgress from '@mui/material/CircularProgress';
 import Grid from '@mui/material/Grid';
 import Skeleton from '@mui/material/Skeleton';
 import TextField from '@mui/material/TextField';
+import InfiniteScroll from 'react-infinite-scroll-component';
 import { useListLanguagesQuery } from '../../../api/lists';
 import defineBlock from '../../../utils/defineBlock';
 import PageTitle from '../../common/PageTitle';
@@ -14,8 +17,8 @@ import LanguageCard from './LanguageCard';
 
 export const bem = defineBlock('LanguagesList');
 
-export const NUM_LOADING_MOCKS = 15;
-const CARD_HEIGHT = 182;
+export const PAGE_SIZE = 30;
+const CARD_HEIGHT = 153;
 
 const LanguagesList = ({
   favoritesOnly
@@ -23,6 +26,7 @@ const LanguagesList = ({
   const { languages, languagesLoading, languagesError } = useListLanguagesQuery();
   const { favorites, isFavorite } = useFavorites();
   const [selectedLanguages, setSelectedLanguages] = useState([]);
+  const [page, setPage] = useState(1);
 
   const normalizedLanguages = useMemo(
     () => (languages || [])
@@ -50,6 +54,12 @@ const LanguagesList = ({
     return values;
   }, [normalizedLanguages, favorites, selectedLanguages]);
 
+  const displayedLanguages = useMemo(() => {
+    const start = 0;
+    const end = page * PAGE_SIZE;
+    return filteredLanguages.slice(start, end);
+  }, [filteredLanguages, page]);
+
   let content = null;
   if (languagesError) {
     content = <RequestErrorAlert />;
@@ -58,7 +68,7 @@ const LanguagesList = ({
     let gridItems = null;
     if (languagesLoading) {
       options = [];
-      gridItems = [...Array(NUM_LOADING_MOCKS)].map((_, i) => ({
+      gridItems = [...Array(PAGE_SIZE)].map((_, i) => ({
         key: i,
         component: (
           <Skeleton
@@ -72,7 +82,7 @@ const LanguagesList = ({
         ...language,
         firstLetter: language.normalName[0].toUpperCase()
       }));
-      gridItems = filteredLanguages.map((language) => ({
+      gridItems = displayedLanguages.map((language) => ({
         key: language.code,
         component: (
           <LanguageCard
@@ -89,21 +99,32 @@ const LanguagesList = ({
       gridContent = <NoItemsAlert />;
     } else {
       gridContent = (
-        <Grid container spacing={2}>
-          {gridItems.map((item) => (
-            <Grid
-              key={item.key}
-              item
-              xs={12}
-              sm={12}
-              md={6}
-              lg={4}
-              xl={4}
-            >
-              {item.component}
-            </Grid>
-          ))}
-        </Grid>
+        <InfiniteScroll
+          dataLength={displayedLanguages.length}
+          next={() => { setPage(page + 1); }}
+          hasMore={displayedLanguages.length < filteredLanguages.length}
+          loader={(
+            <Box sx={{ display: 'flex', justifyContent: 'center', p: 3 }}>
+              <CircularProgress />
+            </Box>
+          )}
+        >
+          <Grid container spacing={2}>
+            {gridItems.map((item) => (
+              <Grid
+                key={item.key}
+                item
+                xs={12}
+                sm={12}
+                md={6}
+                lg={4}
+                xl={4}
+              >
+                {item.component}
+              </Grid>
+            ))}
+          </Grid>
+        </InfiniteScroll>
       );
     }
 
@@ -119,7 +140,10 @@ const LanguagesList = ({
           isOptionEqualToValue={(option, value) => option.code === value.code}
           sx={{ marginBottom: 2 }}
           renderInput={(params) => <TextField {...params} label="Choose a language" />}
-          onChange={(_, value) => { setSelectedLanguages(value); }}
+          onChange={(_, value) => {
+            setPage(1);
+            setSelectedLanguages(value);
+          }}
         />
         {gridContent}
       </>

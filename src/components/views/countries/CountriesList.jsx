@@ -1,9 +1,12 @@
 import React, { useState, useMemo } from 'react';
 import PropTypes from 'prop-types';
 import Autocomplete from '@mui/material/Autocomplete';
+import Box from '@mui/material/Box';
+import CircularProgress from '@mui/material/CircularProgress';
 import Grid from '@mui/material/Grid';
 import Skeleton from '@mui/material/Skeleton';
 import TextField from '@mui/material/TextField';
+import InfiniteScroll from 'react-infinite-scroll-component';
 import { useListCountriesQuery } from '../../../api/lists';
 import defineBlock from '../../../utils/defineBlock';
 import PageTitle from '../../common/PageTitle';
@@ -14,7 +17,7 @@ import CountryCard from './CountryCard';
 
 export const bem = defineBlock('CountriesList');
 
-export const NUM_LOADING_MOCKS = 15;
+export const PAGE_SIZE = 30;
 const CARD_HEIGHT = 182;
 
 const CountriesList = ({
@@ -23,6 +26,7 @@ const CountriesList = ({
   const { countries, countriesLoading, countriesError } = useListCountriesQuery();
   const { favorites, isFavorite } = useFavorites();
   const [selectedCountries, setSelectedCountries] = useState([]);
+  const [page, setPage] = useState(1);
 
   const normalizedCountries = useMemo(
     () => (countries || [])
@@ -50,6 +54,12 @@ const CountriesList = ({
     return values;
   }, [normalizedCountries, favorites, selectedCountries]);
 
+  const displayedCountries = useMemo(() => {
+    const start = 0;
+    const end = page * PAGE_SIZE;
+    return filteredCountries.slice(start, end);
+  }, [filteredCountries, page]);
+
   let content = null;
   if (countriesError) {
     content = <RequestErrorAlert />;
@@ -58,7 +68,7 @@ const CountriesList = ({
     let gridItems = null;
     if (countriesLoading) {
       options = [];
-      gridItems = [...Array(NUM_LOADING_MOCKS)].map((_, i) => ({
+      gridItems = [...Array(PAGE_SIZE)].map((_, i) => ({
         key: i,
         component: (
           <Skeleton
@@ -72,7 +82,7 @@ const CountriesList = ({
         ...country,
         firstLetter: country.normalName[0].toUpperCase()
       }));
-      gridItems = filteredCountries.map((country) => ({
+      gridItems = displayedCountries.map((country) => ({
         key: country.code,
         component: (
           <CountryCard
@@ -90,21 +100,32 @@ const CountriesList = ({
       gridContent = <NoItemsAlert />;
     } else {
       gridContent = (
-        <Grid container spacing={2}>
-          {gridItems.map((item) => (
-            <Grid
-              key={item.key}
-              item
-              xs={12}
-              sm={12}
-              md={6}
-              lg={4}
-              xl={4}
-            >
-              {item.component}
-            </Grid>
-          ))}
-        </Grid>
+        <InfiniteScroll
+          dataLength={displayedCountries.length}
+          next={() => { setPage(page + 1); }}
+          hasMore={displayedCountries.length < filteredCountries.length}
+          loader={(
+            <Box sx={{ display: 'flex', justifyContent: 'center', p: 3 }}>
+              <CircularProgress />
+            </Box>
+          )}
+        >
+          <Grid container spacing={2}>
+            {gridItems.map((item) => (
+              <Grid
+                key={item.key}
+                item
+                xs={12}
+                sm={12}
+                md={6}
+                lg={4}
+                xl={4}
+              >
+                {item.component}
+              </Grid>
+            ))}
+          </Grid>
+        </InfiniteScroll>
       );
     }
 
@@ -120,7 +141,10 @@ const CountriesList = ({
           isOptionEqualToValue={(option, value) => option.code === value.code}
           sx={{ marginBottom: 2 }}
           renderInput={(params) => <TextField {...params} label="Choose a country" />}
-          onChange={(_, value) => { setSelectedCountries(value); }}
+          onChange={(_, value) => {
+            setPage(1);
+            setSelectedCountries(value);
+          }}
         />
         {gridContent}
       </>

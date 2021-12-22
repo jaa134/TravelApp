@@ -4,7 +4,7 @@ import TestWrapper from '../../../utils/TestWrapper';
 import updateWrapper from '../../../utils/updateWrapper';
 import { LIST_CONTINENTS } from '../../../api/lists';
 import { getItemmKey, FAVORITES_STORAGE_KEY } from '../../utilities/favorites/FavoritesProvider';
-import ContinentsList, { bem, NUM_LOADING_MOCKS } from './ContinentsList';
+import ContinentsList, { bem, PAGE_SIZE } from './ContinentsList';
 
 const getContinent = (i) => ({
   name: `name${i}`,
@@ -55,7 +55,7 @@ const validateLoading = (wrapper) => {
   // validate loading component is displayed while query is in loading state
   const continentsList = getContinentsList(wrapper);
   expect(continentsList.exists()).toBe(true);
-  expect(continentsList.find('MuiSkeletonRoot')).toHaveLength(NUM_LOADING_MOCKS);
+  expect(continentsList.find('MuiSkeletonRoot')).toHaveLength(PAGE_SIZE);
 };
 
 describe('ContinentsList', () => {

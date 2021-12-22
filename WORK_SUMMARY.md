@@ -49,6 +49,7 @@ Procedure
 33. Cleaned up Apollo error handling by moving logging logic to client's link chain
 34. Refined test suite.
 35. Add filtering to list views.
+36. Add inifinite scrolling to list views to reduce initial rendering time from loading long lists
 
 ### TODO
 - Consider adding client side pagination to the list views so rendering is quicker

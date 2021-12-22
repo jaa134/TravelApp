@@ -4,7 +4,7 @@ import TestWrapper from '../../../utils/TestWrapper';
 import updateWrapper from '../../../utils/updateWrapper';
 import { LIST_LANGUAGES } from '../../../api/lists';
 import { getItemmKey, FAVORITES_STORAGE_KEY } from '../../utilities/favorites/FavoritesProvider';
-import LanguagesList, { bem, NUM_LOADING_MOCKS } from './LanguagesList';
+import LanguagesList, { bem, PAGE_SIZE } from './LanguagesList';
 
 const getLanguage = (i) => ({
   name: `name${i}`,
@@ -55,7 +55,7 @@ const validateLoading = (wrapper) => {
   // validate loading component is displayed while query is in loading state
   const languagesList = getLanguagesList(wrapper);
   expect(languagesList.exists()).toBe(true);
-  expect(languagesList.find('MuiSkeletonRoot')).toHaveLength(NUM_LOADING_MOCKS);
+  expect(languagesList.find('MuiSkeletonRoot')).toHaveLength(PAGE_SIZE);
 };
 
 describe('LanguagesList', () => {
