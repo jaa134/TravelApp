@@ -1,5 +1,5 @@
 # TravelApp
-GeoPlanner is a front end application that helps users plan trips to other continents, countries, and states. Easily navigate our travel API using traditional routing to show different pages for list and detail views. Learn more about the places you want to go with the world's #1 travel site! Did I mention this service is free?!?
+Planet Planner is a front end application that helps users plan trips to other continents, countries, and states. Easily navigate our travel API using traditional routing to show different pages for list and detail views. Learn more about the places you want to go with the world's #1 travel site! Did I mention this service is free?!?
 
 ### World tour
 Take a world tour from our app's home page. We use Cesium and up-to-date geojson files so you can travel the world from the comfort of your own chair. Interact with this 3d model of Earth and its many countries. View country borders all across the globe, search for places to find them quickly, or click around the map for more detailed views.

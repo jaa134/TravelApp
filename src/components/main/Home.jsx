@@ -17,7 +17,7 @@ const Home = () => {
   return (
     <div className={bem()}>
       <Typography variant="h2" component="div">
-        Welcome to GeoPlanner
+        Welcome to Planet Planner
       </Typography>
       <Typography className={bem('subheader')} variant="h5" component="div">
         The world&apos;s #1 travel planning tool

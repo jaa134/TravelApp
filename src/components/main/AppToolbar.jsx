@@ -46,7 +46,7 @@ const AppToolbar = () => {
           noWrap
           component="div"
         >
-          GeoPlanner
+          Planet Planner
         </Typography>
         <Box sx={{ flexGrow: 1 }} />
         <Tooltip title="Open user menu">
