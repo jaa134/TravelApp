@@ -1,9 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Typography from '@mui/material/Typography';
+import defineBlock from '../../utils/defineBlock';
+
+const bem = defineBlock('PageTitle');
 
 const PageTitle = ({ text }) => (
-  <Typography variant="h4" gutterBottom sx={{ fontWeight: 'light' }}>
+  <Typography className={bem()} variant="h4" gutterBottom sx={{ fontWeight: 'light' }}>
     {text}
   </Typography>
 );
