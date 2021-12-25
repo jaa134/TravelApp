@@ -8,5 +8,6 @@ export const paths = {
   LANGUAGE: 'language',
   FAVORITES: 'favorites',
   RANDOM: 'random',
+  TOUR: 'tour',
   GRAPHIQL: 'graphiql'
 };

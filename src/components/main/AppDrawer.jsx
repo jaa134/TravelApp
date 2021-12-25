@@ -8,6 +8,7 @@ import FlagIcon from '@mui/icons-material/Flag';
 import HomeIcon from '@mui/icons-material/Home';
 import PublicIcon from '@mui/icons-material/Public';
 import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
+import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 import TerminalIcon from '@mui/icons-material/Terminal';
 import TranslateIcon from '@mui/icons-material/Translate';
 import { paths } from '../../constants';
@@ -52,6 +53,11 @@ const utilitiesNav = [
     name: 'Random',
     icon: <QuestionMarkIcon />,
     href: paths.RANDOM
+  },
+  {
+    name: 'Virtual tour',
+    icon: <TravelExploreIcon />,
+    href: paths.TOUR
   },
   {
     name: 'GraphiQL',

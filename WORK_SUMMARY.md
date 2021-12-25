@@ -51,6 +51,8 @@ Procedure
 35. Add filtering to list views.
 36. Add inifinite scrolling to list views to reduce initial rendering time from loading long lists
 37. Add a production ready webpack file with plugins for analyzing bundle size
+38. Move virtual world tour to its own page. 
+39. Turn home page into product description page
 
 ### TODO
 - Rearrange CSS import order so my CSS definitions are higher priority than Materil UI. Remove use of "!important"

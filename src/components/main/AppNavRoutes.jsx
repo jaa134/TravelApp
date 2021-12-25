@@ -40,6 +40,10 @@ const RandomPage = lazy(() => import(
   /* webpackChunkName: "RandomPage", webpackPrefetch: true */
   '../utilities/random/RandomPage'
 ));
+const TourPage = lazy(() => import(
+  /* webpackChunkName: "TourPage", webpackPrefetch: true */
+  '../utilities/tour/TourPage'
+));
 const GraphqlIDE = lazy(() => import(
   /* webpackChunkName: "GraphqlIDE", webpackPrefetch: true */
   '../utilities/graphiql/GraphqlIDE'
@@ -62,6 +66,7 @@ const AppNavRoutes = () => (
       <Route path={paths.LANGUAGES} element={<LanguagesList />} exact />
       <Route path={paths.FAVORITES} element={<Favorites />} exact />
       <Route path={paths.RANDOM} element={<RandomPage />} exact />
+      <Route path={paths.TOUR} element={<TourPage />} exact />
       <Route path={paths.GRAPHIQL} element={<GraphqlIDE />} exact />
       <Route path={`${paths.CONTINENT}/:id`} element={<ContinentDetails />} exact />
       <Route path={`${paths.COUNTRY}/:id`} element={<CountryDetails />} exact />
