@@ -42,8 +42,9 @@ module.exports = {
   },
   entry: './src/index.jsx',
   output: {
-    filename: '[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
+    filename: 'js/[name].bundle.js',
+    chunkFilename: 'js/chunks/[name].bundle.js',
     clean: true,
   },
   module: {
@@ -83,14 +84,14 @@ module.exports = {
         loader: 'json-loader'
       },
       {
-        test: /\.(ico|png|svg|jpg|jpeg|gif)$/i,
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
         type: 'asset/resource',
         generator: {
           filename: 'images/[hash][ext][query]'
         }
       },
       {
-        test: /\.(woff|woff2)$/i,
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: 'asset/resource',
         generator: {
           filename: 'fonts/[hash][ext][query]'
