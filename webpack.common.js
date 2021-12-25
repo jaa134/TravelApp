@@ -8,6 +8,7 @@ const webpack = require("webpack");
 const HtmlPlugin = require("html-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const HtmlTagsPlugin = require("html-webpack-tags-plugin");
+const path = require('path');
 
 /*
   - Copy whole Cesium files at build time with copy-webpack-plugin
@@ -39,8 +40,12 @@ module.exports = {
   externals: {
     cesium: "Cesium",
   },
-  mode: 'development',
   entry: './src/index.jsx',
+  output: {
+    filename: '[name].bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+    clean: true,
+  },
   module: {
     rules: [
       {
@@ -78,18 +83,20 @@ module.exports = {
         loader: 'json-loader'
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        test: /\.(ico|png|svg|jpg|jpeg|gif)$/i,
         type: 'asset/resource',
-      },  
-      {
-        test: /\.js$/,
-        enforce: 'pre',
-        use: ['source-map-loader'],
+        generator: {
+          filename: 'images/[hash][ext][query]'
+        }
       },
+      {
+        test: /\.(woff|woff2)$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: 'fonts/[hash][ext][query]'
+        }
+      }
     ]
   },
-  plugins: [definePlugin, copyPlugin, htmlTagsPlugin, htmlPlugin],
-  devServer: {
-    host: '0.0.0.0'
-  }
+  plugins: [definePlugin, copyPlugin, htmlTagsPlugin, htmlPlugin]
 };

@@ -50,10 +50,10 @@ Procedure
 34. Refined test suite.
 35. Add filtering to list views.
 36. Add inifinite scrolling to list views to reduce initial rendering time from loading long lists
+37. Add a production ready webpack file with plugins for analyzing bundle size
 
 ### TODO
 - Rearrange CSS import order so my CSS definitions are higher priority than Materil UI. Remove use of "!important"
-- Make a production config for webpack
 - Update tests to make better use of bem functions for component names
 - Setup Gitlab CI pipeline for running tests and linting on push to master
 - consider using Parcel in the future for quicker project configuration
