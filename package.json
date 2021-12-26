@@ -7,6 +7,8 @@
   "scripts": {
     "start": "webpack serve --config webpack.dev.js",
     "build": "webpack --config webpack.prod.js",
+    "deploy": "yarn build && cp -a dist/ My-Website-BUILD/planetPlanner/",
+    "bundle-report": "webpack-bundle-analyzer --port 4200 dist/stats.json",
     "lint-fix": "eslint src --ext .js,.jsx --fix",
     "test": "jest"
   },

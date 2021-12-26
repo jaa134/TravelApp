@@ -32,6 +32,8 @@ Are you more of a techinical user? Do you have a background with GraphQL develop
 - `yarn install` installs all dependencies
 - `yarn start` uses webpack to serve content at `http://localhost:8080/`
 - `yarn build` uses webpack to build content distributables`
+- `yarn deploy` builds and copies distrubtable to correct location for updating prod
+- `bundle-report` learn more info about the distributable file contents
 - `yarn test` runs our testing suite using Jest and Enzyme
 - `yarn lint-fix` runs ESLint against all js and jsx files
 

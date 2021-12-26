@@ -53,9 +53,9 @@ Procedure
 37. Add a production ready webpack file with plugins for analyzing bundle size
 38. Move virtual world tour to its own page. 
 39. Turn home page into product description page
+40. Setup project to use automated deployment intgrations with Hostinger
 
 ### TODO
 - Rearrange CSS import order so my CSS definitions are higher priority than Materil UI. Remove use of "!important"
 - Update tests to make better use of bem functions for component names
 - Setup Gitlab CI pipeline for running tests and linting on push to master
-- consider using Parcel in the future for quicker project configuration
