@@ -1,9 +1,3 @@
-// TODO: make this ready for production build so files are packaged 
-// and bundled into output dir. Split the shared parts of this config 
-// into a shared file and move environment specific pieces into separate 
-// dev and production configs. Merge shared config with environment config.
-// See more: https://webpack.js.org/guides/production/
-
 const webpack = require("webpack");
 const HtmlPlugin = require("html-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
